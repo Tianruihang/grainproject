@@ -15,25 +15,25 @@ body {
   margin-bottom: 0px;
 }
 .tabfont01 {  
-  font-family: "ËÎÌå";
+  font-family: "宋体";
   font-size: 9px;
   color: #555555;
   text-decoration: none;
   text-align: center;
 }
-.font051 {font-family: "ËÎÌå";
+.font051 {font-family: "宋体";
   font-size: 12px;
   color: #333333;
   text-decoration: none;
   line-height: 20px;
 }
-.font201 {font-family: "ËÎÌå";
+.font201 {font-family: "宋体";
   font-size: 12px;
   color: #FF0000;
   text-decoration: none;
 }
 .button {
-  font-family: "ËÎÌå";
+  font-family: "宋体";
   font-size: 14px;
   height: 37px;
 }
