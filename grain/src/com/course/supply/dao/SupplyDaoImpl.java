@@ -10,9 +10,9 @@ import com.framework.Page;
 @Repository
 
 public class SupplyDaoImpl extends BaseDao<Supply,Integer>{
-	public void saveSupply(Supply F){
+	public void saveSupply(Supply S){
 		try{
-			this.save(F);
+			this.save(S);
 		}catch(Exception e){
 			e.printStackTrace();
 		}
@@ -21,7 +21,7 @@ public class SupplyDaoImpl extends BaseDao<Supply,Integer>{
 	public Page<Supply> findSupply(int pageNum,int pageSize,Object[] params){
 		String hql;
 		if(params !=null && params.length>0){
-			hql="from Supply f where f.name like ?";
+			hql="from Supply s where s.supplyName like ?";
 			params[0]="%"+params[0]+"%";
 		}else{
 			hql="from Supply";
@@ -39,17 +39,17 @@ public class SupplyDaoImpl extends BaseDao<Supply,Integer>{
 	}
 	public Supply getSupply(int supplyId){
 		try {
-			Supply f = this.get(supplyId);
-			return f;
+			Supply s = this.get(supplyId);
+			return s;
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
 			return null;
 		}
 	}
-	public void updateSupply(Supply f){
+	public void updateSupply(Supply s){
 		try {
-			this.update(f);
+			this.update(s);
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();

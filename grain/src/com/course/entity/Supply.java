@@ -32,6 +32,7 @@ public class Supply {
 	public void setSupplyId(Integer supplyId) {
 		SupplyId = supplyId;
 	}
+	
 	public String getSupplyName() {
 		return SupplyName;
 	}

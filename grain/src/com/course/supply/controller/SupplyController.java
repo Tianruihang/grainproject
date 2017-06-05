@@ -4,6 +4,7 @@ import java.io.UnsupportedEncodingException;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.swing.text.html.FormSubmitEvent.MethodType;
 
 import org.springframework.stereotype.Controller;
@@ -18,46 +19,53 @@ import com.course.entity.Meat;
 import com.course.supply.service.SupplyServiceImpl;
 import com.framework.Page;
 
+
 @Controller
-@RequestMapping("Supply")
+@RequestMapping("supply")
 
 public class SupplyController {
 	@Resource
 	private SupplyServiceImpl supplyServiceImpl;
 	
 	@RequestMapping("add")
-	public String add(@RequestParam(name="name") String fname,HttpServletRequest request){
+	public String add(@RequestParam(name="supplyName") String sname,HttpServletRequest request){
 		String name = null;
 		try {
-			name = new String(fname.getBytes("ISO8859_1"),"UTF-8");
+			name = new String(sname.getBytes("ISO8859_1"),"UTF-8");
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
 		}
-		Supply f = new Supply();
-		f.setSupplyName(name);
-		this.supplyServiceImpl.addSupply(f);
+		Supply s = new Supply();
+		s.setSupplyName(name);
+		this.supplyServiceImpl.addSupply(s);
 		return "redirect:list";
 	}
 	@RequestMapping(value="edit",method=RequestMethod.GET)
 	public String toEdit(@RequestParam("SupplyId") int supplyId,
 			HttpServletRequest request){
-		Supply f = this.supplyServiceImpl.getSupply(supplyId);
-		request.setAttribute("fru", f);
+		Supply s = this.supplyServiceImpl.getSupply(supplyId);
+		request.setAttribute("sup", s);
 		request.setAttribute("action", "edit");
-		return "Supply/edit";
+		return "files/addgeranjianjie";
+	}
+	@RequestMapping(value="delete")
+	public String delete(@RequestParam("supplyId") int supplyId,
+			HttpServletRequest request){
+		this.supplyServiceImpl.dropSupply(supplyId);
+		return "redirect:list";
 	}
 	@RequestMapping(value="edit",method=RequestMethod.POST)
-	public String edit(Supply f,HttpServletRequest request){
+	public String edit(Supply s,HttpServletRequest request){
 		String name = null;
 		try {
-			name = new String(f.getSupplyName().getBytes("ISO8859_1"),"UTF_8");
+			name = new String(s.getSupplyName().getBytes("ISO8859_1"),"UTF_8");
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
 		}
-		f.setSupplyName(name);
-		this.supplyServiceImpl.editSupply(f);
+		s.setSupplyName(name);
+		this.supplyServiceImpl.editSupply(s);
 		return "redirect:list";
 	}
 	@RequestMapping("list")
@@ -79,8 +87,22 @@ public class SupplyController {
 		}
 			request.setAttribute("page", page);
 			request.setAttribute("searchParam", searchParam);
-			return "supply/list";
+			return "files/gongyingshangguanli";
 	
+	}
+	@RequestMapping("chakan")
+	public String chakan(@RequestParam(name="supplyId")int supplyId,HttpServletRequest request){
+		Supply supply = this.supplyServiceImpl.getSupply(supplyId);
+		HttpSession session = request.getSession();
+		session.setAttribute("supply",supply);
+		return "files/gerenjianjiechakan";
+	}
+	@RequestMapping("chakanyh")
+	public String chakanyh(@RequestParam(name="supplyId")int supplyId,HttpServletRequest request){
+		Supply supply = this.supplyServiceImpl.getSupply(supplyId);
+		HttpSession session = request.getSession();
+		session.setAttribute("supp",supply);
+		return "files/gerenjianjiechakanyh";
 	}
 
 }

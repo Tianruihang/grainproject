@@ -1,4 +1,4 @@
-﻿<%@ page language="java" contentType="textml; charset=UTF-8" pageEncoding="UTF-8"%>
+﻿<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:set var="ctx" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -6,7 +6,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>粟苗后台管理系统</title>
-<link rel="stylesheet" rev="stylesheet" href="../${ctx }/css/style.css" type="text/css" media="all" />
+<link rel="stylesheet" rev="stylesheet" href="${ctx }/css/style.css" type="text/css" media="all" />
 
 
 <script language="JavaScript" type="text/javascript">
@@ -20,7 +20,7 @@ document.getElementById("aa").style.display="";
 
 function link(){
 alert('保存成功');
-    document.getElementById("fom").action="${ctx }/gongyingshangguanli.jsp";
+    document.getElementById("fom").action="${ctx }/supply/add";
    document.getElementById("fom").submit();
 }
 
@@ -46,6 +46,12 @@ alert('保存成功');
 		
 		<table border="0" cellpadding="0" cellspacing="0" style="width:100%">
 		<tr><td align="left">
+		<c:if test="${action=='edit' }">
+			<form action="${ctx }/supply/edit" method="post"/>
+			</c:if>
+			<c:if test="${action!='edit' }">
+			<form action="${ctx }/supply/add" method="post"/>
+			</c:if>
 		<input type="button" name="Submit" value="保存" class="button" onclick="alert('保存成功');"/>
 			
 			<input type="button" name="Submit2" value="返回" class="button" onclick="window.history.go(-1);"/>
@@ -59,18 +65,18 @@ alert('保存成功');
 					 
 					  <tr>
 					    <td nowrap align="right" width="13%">名称:</td>
-					    <td width="41%"><input name="text" class="text" style="width:250px" type="text" size="40" />
+					    <td width="41%"><input name="text" class="text" style="width:250px" type="text" size="40" value="${sup.supplyName}" />
 				        <span class="red"> *</span></td>
 					    
 					    </tr>
 					  <tr>
 					    <td nowrap align="right">联系方式:</td>
-					    <td><input name="" id="" class="text" style="width:154px" /></td>
+					    <td><input name="" id="" class="text" style="width:154px" value="${sup.supplyNumber }" /></td>
 					    
 					  </tr>
 					  <tr>
 					    <td nowrap align="right" height="120px">备注:</td>
-					    <td colspan="3"><textarea id="textarea" name="textarea" rows="5" cols="80"></textarea></td>
+					    <td colspan="3"><textarea id="textarea" name="textarea" rows="5" cols="80" value="${sup.supplyIntroduce }"></textarea></td>
 					    </tr>
 					    <tr>
 					   <td width="14%" align="right" nowrap>上传图片:</td>
@@ -102,7 +108,7 @@ alert('保存成功');
   	
 		<TR>
 			<TD colspan="2" align="center" height="50px">
-			<input type="button" name="Submit" value="保存" class="button" onclick="link();"/>
+			<input type="button" name="Submit" value="保存" class="button"/>
 			
 			<input type="button" name="Submit2" value="返回" class="button" onclick="window.history.go(-1);"/></TD>
 		</TR>

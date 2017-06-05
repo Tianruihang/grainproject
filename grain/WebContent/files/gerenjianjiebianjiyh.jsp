@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>粟苗后台管理系统</title>
+<title>grain后台管理系统-个人简介编辑（用户）</title>
 <link rel="stylesheet" rev="stylesheet" href="../${ctx }/css/style.css" type="text/css" media="all" />
 
 <style type="text/css">
@@ -33,6 +33,12 @@
 		
 		<table border="0" cellpadding="0" cellspacing="0" style="width:100%">
 		<tr><td align="left">
+		<c:if test="${action=='edit' }">
+			<form action="${ctx }/supply/edit" method="post"/>
+			</c:if>
+			<c:if test="${action!='edit' }">
+			<form action="${ctx }/supply/add" method="post"/>
+			</c:if>
 		<input type="button" name="Submit" value="保存" class="button" onclick="alert('修改成功');"/>
 			
 			<input type="button" name="Submit2" value="返回" class="button" onclick="window.history.go(-1);"/>
@@ -44,26 +50,27 @@
   </tr>
   <TR>
 			<TD width="100%">
+			<input type="hidden" name="customerId" value="${s.SupplyId }"></input>
 				<fieldset style="height:100%;">
-				<legend>张三</legend>
+				<legend>${s.SupplyName}</legend>
 					  <table border="0" cellpadding="5" cellspacing="1" style="width:100%">
 					    
 					    
 					  <tr>
                         <td nowrap="nowrap" align="right">联系方式:</td>
 					    <td><span class="red">
-                          <input name="txt34222" type="text" class="text" style="width:154px" value="1333333" />
+                          <input name="txt34222" type="text" class="text" style="width:154px" value="${s.SupplyNumber}" />
 					      *</span></td>
 					   
 					    
 					    </tr>
 					  <tr>
 					    <td width="14%" align="right" nowrap>简介:</td>
-					    <td width="86%" colspan="3"><textarea name="textarea3" cols="105" rows="20"></textarea></td>
+					    <td width="86%" colspan="3"><textarea name="textarea3" cols="105" rows="20">${s.SupplyIntroduce}</textarea></td>
 					  </tr>
 					    <tr>
 					    <td width="14%" align="right" nowrap>图片:</td>
-					    <td width="86%" colspan="3"><img src="../${ctx }/images/20140410_095650.jpg"><input type="button" name="Submit" value="删除" class="button" onclick="alert('删除成功');"/></td>
+					    <td width="86%" colspan="3"><img src="${sup.SupplyPicture}"><input type="button" name="Submit" value="删除" class="button" onclick="alert('删除成功');"/></td>
 					  </tr>
 					   <tr>
 					    <td width="14%" align="right" nowrap>上传图片:</td>

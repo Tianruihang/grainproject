@@ -86,7 +86,7 @@ public class UserController {
 		}
 		request.setAttribute("page", page);
 		request.setAttribute("searchParam", searchParam);
-		return "user/listuser";
+		return "user/yonghuguanli";
 		
 	}
 }

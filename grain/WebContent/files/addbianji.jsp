@@ -1,4 +1,4 @@
-﻿<%@ page language="java" contentType="textml; charset=UTF-8" pageEncoding="UTF-8"%>
+﻿<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:set var="ctx" value="${pageContext.request.contextPath}" />
 
@@ -57,16 +57,31 @@ alert('保存成功');
 				<fieldset style="height:100%;">
 				<legend>添加</legend>
 					  <table border="0" cellpadding="2" cellspacing="1" style="width:100%">
-					 
-					  <tr>
-					    <td nowrap align="right" width="13%">名称:</td>
+					 <tr>
+					    <td nowrap align="right" width="13%">供应商:</td>
 					    <td width="41%"><input name="text" class="text" style="width:250px" type="text" size="40" />
 				        <span class="red"> *</span></td>
 					    
 					    </tr>
 					  <tr>
+					    <td nowrap align="right" width="13%">名称:</td>
+					    <td width="41%"><input name="name" class="text" style="width:250px" type="text" size="40" />
+				        <span class="red"> *</span></td>
+					    
+					    </tr>
+					  <tr>
 					    <td nowrap align="right">价格:</td>
-					    <td><input name="" id="" class="text" style="width:154px" /></td>
+					    <td><input name="" id="" class="text" style="width:154px" /> <span class="red"> *</span></td>
+					    
+					  </tr>
+					   <tr>
+					    <td nowrap align="right">是否特价:</td>
+					    <td><input type="radio" checked="checked" name="是" value=TRUE /></td>
+					    
+					  </tr>
+					  <tr>
+					    <td nowrap align="right">食用等级:</td>
+					    <td><input name="vegetablegrade" id="grade" class="text" style="width:154px" /></td>
 					    
 					  </tr>
 					   <tr>

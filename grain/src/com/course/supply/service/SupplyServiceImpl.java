@@ -17,8 +17,8 @@ public class SupplyServiceImpl {
 	@Resource
 	private SupplyDaoImpl supplyDaoImpl;
 	
-	public void addSupply(Supply f){
-		this.supplyDaoImpl.saveSupply(f);
+	public void addSupply(Supply s){
+		this.supplyDaoImpl.saveSupply(s);
 	}
 	
 	@Transactional(readOnly=true)
@@ -31,9 +31,9 @@ public class SupplyServiceImpl {
 		return this.supplyDaoImpl.getSupply(supplyId);
 	}
 	
-	public void editSupply(Supply f){
-		Supply fdb = this.supplyDaoImpl.getSupply(f.getSupplyId());
-		fdb.setSupplyName(f.getSupplyName());
+	public void editSupply(Supply s){
+		Supply sdb = this.supplyDaoImpl.getSupply(s.getSupplyId());
+		sdb.setSupplyName(s.getSupplyName());
 		
 		
 		
@@ -43,7 +43,7 @@ public class SupplyServiceImpl {
 		
 		
 		
-		this.supplyDaoImpl.updateSupply(fdb);
+		this.supplyDaoImpl.updateSupply(sdb);
 	}
 	public void dropSupply(int supplyId){
 		this.supplyDaoImpl.deleteSupply(supplyId);

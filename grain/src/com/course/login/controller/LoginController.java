@@ -1,19 +1,24 @@
 package com.course.login.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Set;
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.course.entity.Login;
 import com.course.entity.Supply;
 import com.course.login.service.LoginServiceImpl;
-import com.course.supply.service.SupplyServiceImpl;;
+import com.course.supply.service.SupplyServiceImpl;
+import com.google.gson.Gson;;
 @Controller
 @RequestMapping("login")
 public class LoginController {
@@ -26,29 +31,37 @@ public class LoginController {
 			@RequestParam("password") String password, HttpSession session){
 		Login lu=this.loginServiceImpl.login(name, password);
 		
-			if(lu != null){
-				String Root = lu.getRoot();
-				session.setAttribute("Root",lu.getRoot() );
-				if("supply".equals(Root)){
-					session.setAttribute("SupplyId", lu.getRoot());
-					session.setAttribute("supply", lu);
-					session.setAttribute("logined", "on");
-					//设置失效时间
-					session.setMaxInactiveInterval(8*60*60);
-					return "redirect:/";
-				} else if("user".equals(Root)){
-					session.setAttribute("user", lu);
-					session.setMaxInactiveInterval(8*60*60);
-					return "网站首页";
-				} else {
-					System.out.println("lu is not exist");
-					return "login";
-				}
-			} else {
-				System.out.println("lu is null");
-				return "redirect:/login.jsp";
-			}		
+		if(lu!=null){
+			session.setAttribute("loginName",lu.getLoginName());
+			
+				return "indexgly";
+			
+			
+		}else{
+			return "redirect:/login.jsp";
+		}
+		
 	}
+	
+	@RequestMapping("checkname")
+	@ResponseBody
+	public String CheckNameExist(HttpServletRequest request){
+		String name=request.getParameter("loginName");
+		List<Login> list=new ArrayList<Login>();
+		Login l1=new Login();
+		l1.setLoginName("admin");
+		l1.setPassword("111111");
+		l1.setRoot("0");
+		Login l2=new Login();
+		l2.setLoginName("bb");
+		l2.setPassword("22");
+		l2.setRoot("1");
+		list.add(l1);
+		list.add(l2);
+		Gson gson=new Gson();
+		return gson.toJson(list);
+	}
+	
 }
 	
 
