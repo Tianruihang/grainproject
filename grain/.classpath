@@ -9,7 +9,21 @@
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="lib" path="F:/大三/commons-io-2.4.jar"/>
-	<classpathentry kind="lib" path="C:/Users/lenovo/Desktop/commons-io-2.4.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Administrator/Desktop/课程/grain/lib/aspectjweaver.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Administrator/Desktop/课程/grain/lib/commons-io-2.4.jar.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Administrator/Desktop/课程/grain/lib/jaccess.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Administrator/Desktop/课程/grain/lib/jce.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Administrator/Desktop/课程/grain/lib/jfr.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Administrator/Desktop/课程/grain/lib/jfxrt.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Administrator/Desktop/课程/grain/lib/jsse.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Administrator/Desktop/课程/grain/lib/localedata.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Administrator/Desktop/课程/grain/lib/nashorn.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Administrator/Desktop/课程/grain/lib/resources.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Administrator/Desktop/课程/grain/lib/rt.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Administrator/Desktop/课程/grain/lib/sunec.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Administrator/Desktop/课程/grain/lib/sunjce_provider.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Administrator/Desktop/课程/grain/lib/sunmscapi.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Administrator/Desktop/课程/grain/lib/sunpkcs11.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Administrator/Desktop/课程/grain/lib/zipfs.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
