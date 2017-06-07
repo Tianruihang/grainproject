@@ -1,7 +1,10 @@
-﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+﻿<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<c:set var="ctx" value="${pageContext.request.contextPath}" />
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<meta http-equiv="Content-Type" content="text/html; charset="utf-8" />
 <title>粟苗后台管理系统</title>
 <style type="text/css">
 <!--
@@ -12,7 +15,7 @@ body {
   margin-bottom: 0px;
 }
 .tabfont01 {  
-  font-family: "宋体";
+  font-family: "ËÎÌå";
   font-size: 9px;
   color: #555555;
   text-decoration: none;
@@ -38,15 +41,20 @@ html { overflow-x: auto; overflow-y: auto; border:0;}
 -->
 </style>
 
-<link href="../css/css.css" rel="stylesheet" type="text/css" />
+<link href="${ctx}/css/css.css" rel="stylesheet" type="text/css" />
 <script type="text/JavaScript">
 
 </script>
-<link href="../css/style.css" rel="stylesheet" type="text/css" />
+<link href="${ctx}/css/style.css" rel="stylesheet" type="text/css" />
 </head>
 <SCRIPT language=JavaScript>
-function sousuo(){
-  window.open("gaojisousuo.htm","","depended=0,alwaysRaised=1,width=800,height=510,location=0,menubar=0,resizable=0,scrollbars=0,status=0,toolbar=0");
+function search(){
+	var s=$("#searchParam").val();
+	window.location.href="${ctx}/user/listuser?searchParam="+s;
+	
+	$("[UserName='pagen']").each(function(key,value){
+		$(this).attr("href",$(this).attr("href")+"&searchParam='"+s+"'");
+	});
 }
 function selectAll(){
   var obj = document.fom.elements;
@@ -67,9 +75,13 @@ function unselectAll(){
   }
 }
 
-function link(){
-    document.getElementById("fom").action="kehu.htm";
-   document.getElementById("fom").submit();
+function del(){
+	var det =[]; 
+	$('input[name="delid"]:checked').each(function(){ 
+	det.push($(this).val()); 
+	}); 
+	alert(det.length==0 ?'你还没有选择任何内容！':det); 
+	det.action="${ctx}/user/deleteuser";
 }
 
 </SCRIPT>
@@ -81,16 +93,18 @@ function link(){
   <tr>
     <td height="30">      <table width="100%" border="0" cellspacing="0" cellpadding="0">
         <tr>
-          <td height="62" background="../images/nav04.gif">
+          <td height="62" background="${ctx}/images/nav04.gif">
             
        <table width="98%" border="0" align="center" cellpadding="0" cellspacing="0">
         <tr>
-        <td width="24"><img src="../images/ico07.gif" width="20" height="18" /></td>
+        <td width="24"><img src="${ctx}/images/ico07.gif" width="20" height="18" /></td>
         <td width="519"><label>用户名称:
-            <input name="text" type="text" nam="gongs" />
+            <input id="searchParam" name="UserName" type="text" value="${searchParam }" />
+           
+           
         </label>
           </input>
-          <input name="Submit" type="button" class="right-button02" value="搜索" /></td>
+          <input name="Submit" type="button" class="right-button02" value="搜索" onclick="search()"/></td>
          <td width="679" align="left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </td>  
         </tr>
           </table></td>
@@ -101,8 +115,10 @@ function link(){
         <tr>
           <td><table width="95%" border="0" align="center" cellpadding="0" cellspacing="0">
              <tr>
-               <td height="20"><span class="newfont07">选择<a href="#" class="right-font08" onclick="selectAll();">全选</a>-<a href="#" class="right-font08" onclick="unselectAll();">反选</a></span>
-               <input name="Submit" type="button" class="right-button08" value="删除所选信息" /> <a href="addbianji.htm"><button type="button" class="right-button08">添加信息</button></a>
+               <td height="20"><span class="newfont07">选择<a href="#" class="right-font08" onclick="selectAll()">全选</a>-<a href="#" class="right-font08" onclick="unselectAll();">反选</a></span>
+               <input name="Submit" type="button" class="right-button08" value="删除所选信息" onclick="del()"/> 
+            <!--  <input name="Submit" type="button" class="right-button08" value="添加人员信息" onclick="link();" />-->   
+                <!--  <a href="addbianji.jsp"><button type="button" class="right-button08">添加信息</button></a> -->
                 </td>
           </tr>
               <tr>
@@ -121,49 +137,19 @@ function link(){
                    
                     <td width="11%" align="center" bgcolor="#EEEEEE">操作</td>
                   </tr>
+                   <c:forEach items="${page.list}" var="s">
                   <tr>
             <td bgcolor="#FFFFFF"><input type="checkbox" name="delid"/></td>
-            <td width="12%" height="20" align="center" bgcolor="#FFFFFF">1</td>
-          <td height="20" bgcolor="#FFFFFF"><a href="listyuangongmingxi.html">张三</a></td>
-                    <td bgcolor="#FFFFFF"><a href="listyuangongmingxi.html">1521223123</a></td>
-        
-          <td bgcolor="#FFFFFF"><a href="kehu.htm">删除</a></td>
+            <td width="12%" height="20" align="center" bgcolor="#FFFFFF">${s.userId }</td>
+          <td height="20" bgcolor="#FFFFFF"><a href="listyuangongmingxi.jsp">${s.userName }</a></td>
+                    <td bgcolor="#FFFFFF"><a href="listyuangongmingxi.jsp">${s.userNumber }</a></td>
+                    
+          <td bgcolor="#FFFFFF"><a href="${ctx}/user/deleteuser?userId=${s.userId }">删除</a></td>
                   </tr>
-                  <tr>
-            <td bgcolor="#FFFFFF"><input type="checkbox" name="delid"/></td>
-            <td width="12%" height="20" align="center" bgcolor="#FFFFFF">2</td>
-          <td height="20" bgcolor="#FFFFFF"><a href="listyuangongmingxi.html">李四</a></td>
-                    <td bgcolor="#FFFFFF"><a href="listyuangongmingxi.html">1521231233</a></td>
-
-          <td bgcolor="#FFFFFF"><a href="kehu.htm">删除</a></td>
-                  </tr>
-                  <tr>
-            <td bgcolor="#FFFFFF"><input type="checkbox" name="delid"/></td>
-            <td width="12%" height="20" align="center" bgcolor="#FFFFFF">3</td>
-          <td height="20" bgcolor="#FFFFFF"><a href="listyuangongmingxi.html">王五</a></td>
-                    <td bgcolor="#FFFFFF"><a href="listyuangongmingxi.html">1521233123</a></td>
-
-          <td bgcolor="#FFFFFF"><a href="kehu.htm">删除</a></td>
-                  </tr>
-                  <tr>
-            <td bgcolor="#FFFFFF"><input type="checkbox" name="delid"/></td>
-            <td width="12%" height="20" align="center" bgcolor="#FFFFFF">4</td>
-          <td height="20" bgcolor="#FFFFFF"><a href="listyuangongmingxi.html">赵六</a></td>
-                    <td bgcolor="#FFFFFF"><a href="listyuangongmingxi.html">1521233124</a></td>
-                              
-          <td bgcolor="#FFFFFF"><a href="kehu.htm">删除</a></td>
-                  </tr>
-                  <tr>
-            <td bgcolor="#FFFFFF"><input type="checkbox" name="delid"/></td>
-            <td width="12%" height="20" align="center" bgcolor="#FFFFFF">5</td>
-          <td height="20" bgcolor="#FFFFFF"><a href="listyuangongmingxi.html">马七</a></td>
-                    <td bgcolor="#FFFFFF"><a href="listyuangongmingxi.html">1521233125</a></td>
-
-          <td bgcolor="#FFFFFF"><a href="kehu.htm">删除</a></td>
-                  </tr>
+                
+                  
+                </c:forEach> 
                  
-                 
-                  </tr>
                 </table></td>
               </tr>
             </table></td>
@@ -171,18 +157,16 @@ function link(){
       </table>
       <table width="95%" border="0" align="center" cellpadding="0" cellspacing="0">
         <tr>
-          <td height="6"><img src="../images/spacer.gif" width="1" height="1" /></td>
+          <td height="6"><img src="${ctx}/images/spacer.gif" width="1" height="1" /></td>
         </tr>
         <tr>
           <td height="33"><table width="100%" border="0" align="center" cellpadding="0" cellspacing="0" class="right-font08">
               <tr>
-                <td width="50%">共 <span class="right-text09">5</span>页| 第 <span class="right-text09">1</span>页</td>
-                <td width="49%" align="right">[<a href="#" class="right-font08">首页</a> | <a href="#" class="right-font08">上一页</a> | <a href="#" class="right-font08">下一页</a> | <a href="#" class="right-font08">末页</a>] 转至</td>
-                <td width="1%"><table width="20" border="0" cellspacing="0" cellpadding="0">
-                    <tr>
-                      <td width="1%"><input name="textfield3" type="text" class="right-textfield03" size="1" /></td>
-                      <td width="87%"><input name="Submit23222" type="submit" class="right-button06" value=" " />
-                      </td>
+                <tr>
+               <c:forEach begin="1" end="${page.totalPageNum }" var="pageNum">
+						<a name="pagen" href="${ctx}/user/list?pageNum=${pageNum }">${pageNum }</a>
+					</c:forEach>
+                    </tr>
                     </tr>
                 </table></td>
               </tr>
