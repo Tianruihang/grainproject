@@ -17,14 +17,16 @@ public class Vegetable {
 	private String VegetableName;
 	private float VegetablePrice;
 	private Date VegetableDate;
+	private String url;
 	private String VegetableGrade;
 	private String VegetableDescribe;
 	private String VegetableClass;
 	private String VegetableState;
 	private String VegetablePicture;
 	private String VegetableLocation;
+	private String VegetableSupply;
 	
-	private Supply Supply;
+//	private Supply Supply;
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -46,14 +48,14 @@ public class Vegetable {
 	public void setVegetablePrice(float vegetablePrice) {
 		VegetablePrice = vegetablePrice;
 	}
-	@ManyToOne
-	@JoinColumn(name="SupplyName")
-	public Supply getSupply() {
-		return Supply;
-	}
-	public void setSupply(Supply Supply) {
-		this.Supply = Supply;
-	}
+//	@ManyToOne
+//	@JoinColumn(name="SupplyName")
+//	public Supply getSupply() {
+//		return Supply;
+//	}
+//	public void setSupply(Supply Supply) {
+//		this.Supply = Supply;
+//	}
 	public Date getVegetableDate() {
 		return VegetableDate;
 	}
@@ -96,7 +98,12 @@ public class Vegetable {
 	public void setVegetableLocation(String vegetableLocation) {
 		VegetableLocation = vegetableLocation;
 	}
-	
+	public String getVegetableSupply() {
+		return VegetableSupply;
+	}
+	public void setVegetableSupply(String vegetableSupply) {
+		VegetableSupply = vegetableSupply;
+	}
 	
 	
 	

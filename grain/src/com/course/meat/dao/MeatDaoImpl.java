@@ -19,7 +19,7 @@ public class MeatDaoImpl extends BaseDao<Meat,Integer>{
 	public Page<Meat> findMeat(int pageNum,int pageSize,Object[] params){
 		String hql;
 		if(params !=null && params.length>0){
-			hql="from Meat f where f.name like ?";
+			hql="from Meat m where m.meatName like ?";
 			params[0]="%"+params[0]+"%";
 		}else{
 			hql="from Meat";

@@ -21,7 +21,7 @@ import com.framework.Page;
 		public Page<Vegetable> findVegetable(int pageNum, int pageSize,Object[] params){
 			String hql;
 			if(params!=null && params.length>0){
-				hql="from Vegetable v where v.vname like ?";
+				hql="from Vegetable v where v.vegetableName like ?";
 				params[0]="%"+params[0]+"%";
 				
 			}else{

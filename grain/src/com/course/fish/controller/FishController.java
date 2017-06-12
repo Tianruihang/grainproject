@@ -14,7 +14,7 @@ import com.course.fish.service.FishServiceImpl;
 import com.framework.Page;
 
 @Controller
-@RequestMapping("Fish")
+@RequestMapping("fish")
 public class FishController {
 	
 	@Resource
@@ -75,7 +75,13 @@ public class FishController {
 		}
 			request.setAttribute("page", page);
 			request.setAttribute("searchParam", searchParam);
-			return "fish/list";
-	
-	}
-}
+			return "files/shangpinguanli-fish";
+			
+			}
+		@RequestMapping(value="deleteFish")
+			public String delete(@RequestParam("fishId") int fishId,
+					HttpServletRequest request){
+				this.fishServiceImpl.dropFish(fishId);
+				return "redirect:list";
+			}
+		}

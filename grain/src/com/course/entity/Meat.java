@@ -31,8 +31,9 @@ public class Meat {
 	private String MeatState;
 	private String MeatPicture;
 	private String MeatLocation;
+	private String MeatSupply;
 	
-	private Supply Supply;
+//	private Supply Supply;
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -54,15 +55,15 @@ public class Meat {
 	public void setMeatPrice(Float meatPrice) {
 		MeatPrice = meatPrice;
 	}
-	@ManyToOne
-	@JoinColumn(name="SupplyName")
-	public Supply getSupply() {
-		return Supply;
-	}
-	
-	public void setSupply(Supply Supply) {
-		this.Supply = Supply;
-	}
+//	@ManyToOne
+//	@JoinColumn(name="SupplyName")
+//	public Supply getSupply() {
+//		return Supply;
+//	}
+//	
+//	public void setSupply(Supply Supply) {
+//		this.Supply = Supply;
+//	}
 	public Date getMeatDate() {
 		return MeatDate;
 	}
@@ -105,7 +106,12 @@ public class Meat {
 	public void setMeatLocation(String meatLocation) {
 		MeatLocation = meatLocation;
 	}
-	
+	public String getMeatSupply() {
+		return MeatSupply;
+	}
+	public void setMeatSupply(String meatSupply) {
+		MeatSupply = meatSupply;
+	}
 	
 	
 

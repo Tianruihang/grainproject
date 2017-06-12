@@ -137,6 +137,8 @@ function del(){
                    
                     <td width="11%" align="center" bgcolor="#EEEEEE">操作</td>
                   </tr>
+                  
+                  
                    <c:forEach items="${page.list}" var="s">
                   <tr>
             <td bgcolor="#FFFFFF"><input type="checkbox" name="delid"/></td>

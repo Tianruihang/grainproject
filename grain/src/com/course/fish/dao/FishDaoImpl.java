@@ -20,7 +20,7 @@ public class FishDaoImpl extends BaseDao<Fish,Integer> {
 	public Page<Fish> findFish(int pageNum,int pageSize,Object[] params){
 		String hql;
 		if(params !=null && params.length>0){
-			hql="from Fish f where f.name like ?";
+			hql="from Fish f where f.fishName like ?";
 			params[0]="%"+params[0]+"%";
 		}else{
 			hql="from Fish";
