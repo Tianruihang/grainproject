@@ -1,6 +1,7 @@
 package com.course.vegetable.controller;
 
 import java.io.UnsupportedEncodingException;
+import java.sql.Date;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.course.entity.Supply;
 import com.course.entity.Vegetable;
+import com.course.supply.service.SupplyServiceImpl;
 import com.course.vegetable.service.VegetableServiceImpl;
 import com.framework.Page;
 
@@ -21,47 +23,45 @@ import com.framework.Page;
 public class VegetableController {
 	@Resource
 	private VegetableServiceImpl vegetableServiceImpl;
+	@Resource   //只能注入当前的ServiceImpl
+	private SupplyServiceImpl supplyServiceImpl;
 	
 	@RequestMapping("add")
-	public String add(@RequestParam(name="VegetableName") String vname,@RequestParam(name="VegetablePrice") Integer vprice,
-			@RequestParam(name="VegetableSupply") Supply vsupply,@RequestParam(name="VegetableGrade") String vgrade,
+	public String add(
+			@RequestParam(name="VegetableName") String vname,
+			@RequestParam(name="VegetablePrice") Float vprice,
+//			@RequestParam(name="VegetableDate") Date vDate,
+			@RequestParam(name="VegetableGrade") String vgrade,
 			@RequestParam(name="VegetableDescribe") String vdescribe,
 			@RequestParam(name="VegetableClass") String vclass,
 			@RequestParam(name="VegetableState") String vstate,
-			@RequestParam(name="VegetablePicture") String vpicture,
-			@RequestParam(name="VegetableLocation") String vlocation,HttpServletRequest request){
+//			@RequestParam(name="VegetablePicture") String vpicture,
+			@RequestParam(name="SupplyName") String vsupply,
+//			@RequestParam(name="VegetableLocation") String vlocation,
+			HttpServletRequest request){
 		
-		String name = null;
-		String supply = null;
-		String grade = null;
-		String describe = null;
-		String classes = null;
-		String picture = null;
-		String state = null;
-		String location = null;
-		try {
-			name = new String(vname.getBytes("ISO8859_1"), "UTF-8");
-			
-			grade = new String(vgrade.getBytes("ISO8859_1"), "UTF-8");
-			describe = new String(vdescribe.getBytes("ISO8859_1"), "UTF-8");
-			classes = new String(vclass.getBytes("ISO8859_1"), "UTF-8");
-			picture = new String(vpicture.getBytes("ISO8859_1"), "UTF-8");
-			state = new String(vstate.getBytes("ISO8859_1"), "UTF-8");
-			location = new String(vlocation.getBytes("ISO8859_1"), "UTF-8");
-		} catch (UnsupportedEncodingException e) {
-			e.printStackTrace();
+		
+		
+		Supply supply = this.supplyServiceImpl.findByName(vsupply);
+		
+		if (supply == null) {
+			return "not found";
 		}
 		Vegetable v = new Vegetable();
-		v.setVegetableName(name);
-		v.setVegetablePrice(vprice);
-	
-		v.setVegetableClass(classes);
-		v.setVegetableDescribe(describe);
-		v.setVegetableGrade(grade);
-		v.setVegetableLocation(location);
-		v.setVegetablePicture(picture);
-		v.setVegetableState(state);
+		
+		v.setVegetableName(vname);
+		v.setVegetablePrice(vprice);				
+		v.setVegetableClass(vclass);
+//		v.setVegetableDate(vDate);
+		v.setVegetableDescribe(vdescribe);
+		v.setVegetableGrade(vgrade);
+//		v.setVegetableLocation(location);
+//		v.setVegetablePicture(vpicture);
+		v.setVegetableState(vstate);
+		v.setSupply(supply);	
+			
 		this.vegetableServiceImpl.addVegetable(v);
+		
 		return "redirect:list";
 	}
 	

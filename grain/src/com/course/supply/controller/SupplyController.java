@@ -1,12 +1,8 @@
 package com.course.supply.controller;
 
-import java.io.UnsupportedEncodingException;
-
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import javax.swing.text.html.FormSubmitEvent.MethodType;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,8 +10,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.course.entity.Supply;
-import com.course.meat.service.MeatServiceImpl;
-import com.course.entity.Meat;
 import com.course.supply.service.SupplyServiceImpl;
 import com.framework.Page;
 

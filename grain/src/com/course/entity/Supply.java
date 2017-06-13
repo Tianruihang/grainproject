@@ -1,7 +1,9 @@
 package com.course.entity;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -23,6 +25,8 @@ public class Supply {
 	private Integer SupplyNumber;	
 	private String SupplyIntroduce;	
 	private String SupplyPicture;
+	
+	private List<Vegetable> vegetables = new ArrayList<>();
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -57,4 +61,13 @@ public class Supply {
 	public void setSupplyPicture(String supplyPicture) {
 		SupplyPicture = supplyPicture;
 	}
+	@OneToMany(cascade=CascadeType.ALL,fetch=FetchType.LAZY)
+	public List<Vegetable> getVegetables() {
+		return vegetables;
+	}
+	public void setVegetables(List<Vegetable> vegetables) {
+		this.vegetables = vegetables;
+	}
+	
+
 }
