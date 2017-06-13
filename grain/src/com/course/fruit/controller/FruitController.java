@@ -81,4 +81,26 @@ public class FruitController {
 			return "fruit/list";
 	
 	}
+	@RequestMapping("qtlist")
+	public String qtlist(@RequestParam(name="pageNum",defaultValue="1")int pageNum,
+			@RequestParam(name="searchParam",defaultValue="") String searchParam,HttpServletRequest request,
+			Model model){
+		Page<Fruit> page;
+		if (searchParam==null || "".equals(searchParam)) {
+			page=this.fruitServiceImpl.listFruit(pageNum, 5,new Object[]{searchParam});
+			
+		} else {
+			try {
+				searchParam = new String(searchParam.getBytes("ISO8859_1"),"UTF-8");
+			} catch (Exception e) {
+				// TODO: handle exception
+				e.printStackTrace();
+			}
+			page = this.fruitServiceImpl.listFruit(pageNum, 5, new Object[]{searchParam});
+		}
+			request.setAttribute("page", page);
+			request.setAttribute("searchParam", searchParam);
+			return "qt_files/fenleiyemian";
+	
+	}
 }

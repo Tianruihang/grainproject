@@ -1,0 +1,18 @@
+.po{
+	text-align: center;
+}
+.ta td{
+	padding-left: 20px;
+}
+.but{
+	background-image: url(../images/topbg.gif);
+	background-repeat: repeat-x;
+	height: 40px;
+	width: 100px;
+}
+.but2{
+	background-image: url(../images/topbg.gif);
+	background-repeat: repeat-x;
+	height: 40px;
+	width: 100px;
+}

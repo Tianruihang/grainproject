@@ -49,6 +49,14 @@ public class SupplyController {
 		request.setAttribute("action", "edit");
 		return "files/addgeranjianjie";
 	}
+	@RequestMapping(value="edityh",method=RequestMethod.GET)
+	public String toEdityh(@RequestParam("supplyId") int supplyId,
+			HttpServletRequest request){
+		Supply s = this.supplyServiceImpl.getSupply(supplyId);
+		request.setAttribute("sup", s);
+		request.setAttribute("action", "edit");
+		return "files/geranjianjiebianjiyh";
+	}
 	@RequestMapping(value="delete")
 	public String delete(@RequestParam("supplyId") int supplyId,
 			HttpServletRequest request){

@@ -50,7 +50,7 @@
   </tr>
   <TR>
 			<TD width="100%">
-			<input type="hidden" name="customerId" value="${s.SupplyId }"></input>
+			<input type="hidden" name="customerId" value="${s.supplyId }"></input>
 				<fieldset style="height:100%;">
 				<legend>${s.SupplyName}</legend>
 					  <table border="0" cellpadding="5" cellspacing="1" style="width:100%">

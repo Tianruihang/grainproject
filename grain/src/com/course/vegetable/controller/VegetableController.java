@@ -4,6 +4,7 @@ import java.io.UnsupportedEncodingException;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -117,8 +118,15 @@ public class VegetableController {
 		}
 		request.setAttribute("page", page);
 		request.setAttribute("searchParam", searchParam);
-		return "vegetable/list";
+		return "vegetable/shangpinguanli";
 		
+	}
+	@RequestMapping("chakanyh")
+	public String chakanyh(@RequestParam(name="vegetableId")int vegetableId,HttpServletRequest request){
+		Vegetable vegetable = this.vegetableServiceImpl.getVegetable(vegetableId);
+		HttpSession session = request.getSession();
+		session.setAttribute("ve",vegetable);
+		return "files/shangpinguanliyh";
 	}
 
 }

@@ -13,7 +13,12 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Parameter;
 
 @Entity
 @Table(name="supply")
@@ -24,8 +29,10 @@ public class Supply {
 	private String SupplyIntroduce;	
 	private String SupplyPicture;
 	
+	private Login login;
+	
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy=GenerationType.IDENTITY )
 	public Integer getSupplyId() {
 		return SupplyId;
 	}
@@ -57,4 +64,14 @@ public class Supply {
 	public void setSupplyPicture(String supplyPicture) {
 		SupplyPicture = supplyPicture;
 	}
+	@ManyToOne
+	@JoinColumn(name="loginId",unique = true)
+	public Login getLogin() {
+		return login;
+	}
+	public void setLogin(Login login) {
+		this.login = login;
+	}
+	
+	
 }

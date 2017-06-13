@@ -79,7 +79,7 @@ function list(idstr){
 				<table width="90%" border="0" align="center" cellpadding="0" cellspacing="0">
 				  <tr>
 					<td width="25%" rowspan="2"><img src="${ctx }/images/ico02.gif" width="35" height="35" /></td>
-					<td width="75%" height="22" class="left-font01">你好，<span class="left-font02">king</span></td>
+					<td width="75%" height="22" class="left-font01">你好，<span class="left-font02">admin</span></td>
 				  </tr>
 				  <tr>
 					<td height="22" class="left-font01">

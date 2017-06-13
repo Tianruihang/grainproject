@@ -102,23 +102,24 @@ function link(){
 				<table width="100%" border="0" cellpadding="4" cellspacing="1" bgcolor="#464646" class="newfont03">
 					<tr>
                     	<td height="20" colspan="2" bgcolor="#EEEEEE"class="tablestyle_title">
-							<div align="center" style="font-size:16px">个人简介</div>						</td>
+							<div align="center" style="font-size:16px">个人简介</div>
+							<input type="hidden" name="supplyId" value="${supp.supplyId }"></input>							</td>
                     </tr>
                   <tr bgcolor="#FFFFFF" height="20">
 				    <td width="16%" align="right">姓名:</td>
-                    <td width="84%">张三</td>
+                    <td width="84%">${supp.supplyName}</td>
                     </tr>
                   <tr bgcolor="#FFFFFF">
 				    <td align="right">联系方式:</td>
-				    <td>13333333</td>
+				    <td>${supp.supplyNumber}</td>
                     </tr>
                 	<tr bgcolor="#FFFFFF">
 				    	<td align="right" height="80">简介:</td>
-				    	<td>主要经营蔬菜水果类，价格便宜，自家种植，绿色无公害</td>
+				    	<td>${supp.supplyIntroduce}</td>
                    </tr>
                    <tr bgcolor="#FFFFFF">
 				    	<td align="right" height="80">图片:</td>
-				    	<td><img src="../${ctx }/images/20140410_095650.jpg">></td>
+				    	<td><img src="${supp.supplyPicture}">></td>
                    </tr>
                 	</table>
 				</TD>
