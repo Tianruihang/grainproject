@@ -1,4 +1,4 @@
-﻿<%@ page language="java" contentType="textml; charset=UTF-8" pageEncoding="UTF-8"%>
+﻿<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:set var="ctx" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -41,15 +41,15 @@ html { overflow-x: auto; overflow-y: auto; border:0;}
 -->
 </style>
 
-<link href="../css/css.css" rel="stylesheet" type="text/css" />
+<link href="${ctx}/css/css.css" rel="stylesheet" type="text/css" />
 <script type="text/JavaScript">
 
 </script>
-<link href="../css/style.css" rel="stylesheet" type="text/css" />
+<link href="${ctx}/css/style.css" rel="stylesheet" type="text/css" />
 </head>
 <SCRIPT language=JavaScript>
 function sousuo(){
-  window.open("gaojisousuo.htm","","depended=0,alwaysRaised=1,width=800,height=510,location=0,menubar=0,resizable=0,scrollbars=0,status=0,toolbar=0");
+  window.open("gaojisousuo.jsp","","depended=0,alwaysRaised=1,width=800,height=510,location=0,menubar=0,resizable=0,scrollbars=0,status=0,toolbar=0");
 }
 function selectAll(){
   var obj = document.fom.elements;
@@ -71,7 +71,7 @@ function unselectAll(){
 }
 
 function link(){
-    document.getElementById("fom").action="kehu.htm";
+    document.getElementById("fom").action="kehu.jsp";
    document.getElementById("fom").submit();
 }
 
@@ -84,11 +84,11 @@ function link(){
   <tr>
     <td height="30">      <table width="100%" border="0" cellspacing="0" cellpadding="0">
         <tr>
-          <td height="62" background="../images/nav04.gif">
+          <td height="62" background="${ctx}/images/nav04.gif">
             
        <table width="98%" border="0" align="center" cellpadding="0" cellspacing="0">
         <tr>
-        <td width="24"><img src="../images/ico07.gif" width="20" height="18" /></td>
+        <td width="24"><img src="${ctx}/images/ico07.gif" width="20" height="18" /></td>
         <td width="519"><label>商品名称:
             <input name="text" type="text" nam="gongs" />
         </label>
@@ -124,17 +124,20 @@ function link(){
                     <td width="14%" align="center" bgcolor="#EEEEEE">供应商</td>
                     <td width="11%" align="center" bgcolor="#EEEEEE">操作</td>
                   </tr>
+                  
+                  
+                  <c:forEach items="${page.list}" var="s">
                   <tr>
             <td bgcolor="#FFFFFF"><input type="checkbox" name="delid"/></td>
-            <td width="12%" height="20" align="center" bgcolor="#FFFFFF">1</td>
-          <td height="20" bgcolor="#FFFFFF"><a href="listyuangongmingxi.html">胡萝卜</a></td>
-                    <td bgcolor="#FFFFFF"><a href="listyuangongmingxi.html">根菜类</a></td>
-                    <td height="20" bgcolor="#FFFFFF">1.2/kg</td>
-                    <td bgcolor="#FFFFFF">2017-05-10</td>
-                   <td bgcolor="#FFFFFF">张三</td>
-          <td bgcolor="#FFFFFF"><a href="kehu.htm">删除</a>&nbsp;|&nbsp;<a href="addbianji.htm">编辑</a></td>
+            <td width="12%" height="20" align="center" bgcolor="#FFFFFF">${s.fishId}</td>
+          <td height="20" bgcolor="#FFFFFF"><a href="listyuangongmingxi.jsp">${s.fishName}</a></td>
+                    <td bgcolor="#FFFFFF"><a href="listyuangongmingxi.jsp">${s.fishClass}</a></td>
+                    <td height="20" bgcolor="#FFFFFF">${s.fishPrice}</td>
+                    <td bgcolor="#FFFFFF">${s.fishDate}</td>
+                   <td bgcolor="#FFFFFF">${s.fishSupply} </td>
+          <td bgcolor="#FFFFFF"><a href="${ctx}/fish/deleteFish?fishId=${s.fishId }">删除</a>&nbsp;|&nbsp;<a href="${ctx}/files/addbianji.jsp">编辑</a></td>
                   </tr>
-                  <tr>
+        <!--       <tr>
             <td bgcolor="#FFFFFF"><input type="checkbox" name="delid"/></td>
             <td width="12%" height="20" align="center" bgcolor="#FFFFFF">2</td>
           <td height="20" bgcolor="#FFFFFF"><a href="listyuangongmingxi.html">红薯</a></td>
@@ -173,8 +176,9 @@ function link(){
                     <td bgcolor="#FFFFFF">2017-05-09</td>
                     <td bgcolor="#FFFFFF">张三</td>
           <td bgcolor="#FFFFFF"><a href="kehu.htm">删除</a>&nbsp;|&nbsp;<a href="addbianji.htm">编辑</a></td>
-                  </tr>
+                  </tr>        -->     
                  
+                 </c:forEach> 
                  
                   </tr>
                 </table></td>
@@ -184,26 +188,26 @@ function link(){
       </table>
       <table width="95%" border="0" align="center" cellpadding="0" cellspacing="0">
         <tr>
-          <td height="6"><img src="../images/spacer.gif" width="1" height="1" /></td>
+          <td height="6"><img src="${ctx}/images/spacer.gif" width="1" height="1" /></td>
         </tr>
         <tr>
           <td height="33"><table width="100%" border="0" align="center" cellpadding="0" cellspacing="0" class="right-font08">
               <tr>
-                <td width="50%">共 <span class="right-text09">5</span>页| 第 <span class="right-text09">1</span>页</td>
-                <td width="49%" align="right">[<a href="#" class="right-font08">首页</a> | <a href="#" class="right-font08">上一页</a> | <a href="#" class="right-font08">下一页</a> | <a href="#" class="right-font08">末页</a>] 转至</td>
-                <td width="1%"><table width="20" border="0" cellspacing="0" cellpadding="0">
-                    <tr>
-                      <td width="1%"><input name="textfield3" type="text" class="right-textfield03" size="1" /></td>
-                      <td width="87%"><input name="Submit23222" type="submit" class="right-button06" value=" " />
-                      </td>
+                <tr>
+               <c:forEach begin="1" end="${page.totalPageNum }" var="pageNum">
+						<a name="pagen" href="${ctx}/fish/list?pageNum=${pageNum }">${pageNum }</a>
+					</c:forEach>
+                    </tr>
+                    </tr>
+                    </td>
                     </tr>
                 </table></td>
               </tr>
           </table></td>
         </tr>
-      </table></td>
-  </tr>
-</table>
+      </table>
+ 
+
 </form>
 </body>
 </html>

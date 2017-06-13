@@ -17,7 +17,7 @@ import com.course.fruit.service.FruitServiceImpl;
 import com.framework.Page;
 
 @Controller
-@RequestMapping("Fruit")
+@RequestMapping("fruit")
 public class FruitController {
 	
 	@Resource
@@ -78,7 +78,13 @@ public class FruitController {
 		}
 			request.setAttribute("page", page);
 			request.setAttribute("searchParam", searchParam);
-			return "fruit/list";
+			return "files/shangpinguanli-fruit";
 	
+	}
+	@RequestMapping(value="deleteFruit")
+	public String delete(@RequestParam("fruitId") int fruitId,
+			HttpServletRequest request){
+		this.fruitServiceImpl.dropFruit(fruitId);
+		return "redirect:list";
 	}
 }

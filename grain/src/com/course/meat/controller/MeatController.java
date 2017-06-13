@@ -17,7 +17,7 @@ import com.course.meat.service.MeatServiceImpl;
 import com.framework.Page;
 
 @Controller
-@RequestMapping("Meat")
+@RequestMapping("meat")
 public class MeatController {
 	@Resource
 	private MeatServiceImpl meatServiceImpl;
@@ -77,9 +77,13 @@ public class MeatController {
 		}
 			request.setAttribute("page", page);
 			request.setAttribute("searchParam", searchParam);
-			return "meat/list";
+			return "files/shangpinguanli-meat";
 	
 	}
-	
-
+	@RequestMapping(value="deleteMeat")
+	public String delete(@RequestParam("meatId") int meatId,
+			HttpServletRequest request){
+		this.meatServiceImpl.dropMeat(meatId);
+		return "redirect:list";
+	}
 }

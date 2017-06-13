@@ -19,10 +19,17 @@ public class Login {
 	private String LoginName;
 	private String Password;
 	private String Root;
+	private int LoginId;
 	
 	
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	public int getLoginId() {
+		return LoginId;
+	}
+	public void setLoginId(int loginId) {
+		this.LoginId = loginId;
+	}
 	public String getLoginName() {
 		return LoginName;
 	}

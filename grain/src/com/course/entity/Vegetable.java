@@ -18,12 +18,14 @@ public class Vegetable {
 	private String VegetableName;
 	private Float VegetablePrice;
 	private Date VegetableDate;
+	private String url;
 	private String VegetableGrade;
 	private String VegetableDescribe;
 	private String VegetableClass;
 	private String VegetableState;
 	private String VegetablePicture;
 	private String VegetableLocation;
+	private String VegetableSupply;
 	
 	private Supply Supply;
 		
@@ -119,9 +121,5 @@ public class Vegetable {
 	public String toString(){
 		return this.VegetableName;
 	}	
-	
-	
-	
-	
 	
 }
