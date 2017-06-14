@@ -123,7 +123,7 @@ function link(){
 					<td width="10%" align="center" bgcolor="#EEEEEE">供应商</td>
                     <td width="11%" align="center" bgcolor="#EEEEEE">操作</td>
                   </tr>
-                  <c:forEach items="${page.telist}" var="s">
+                  <c:forEach items="${page.list}" var="s">
                   <tr>
 						<td bgcolor="#FFFFFF"><input type="checkbox" name="delid"/></td>
 						<td width="12%" height="20" align="center" bgcolor="#FFFFFF">${s.vegetableId}</td>
