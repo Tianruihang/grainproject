@@ -106,13 +106,5 @@ public class Meat {
 	public void setMeatLocation(String meatLocation) {
 		MeatLocation = meatLocation;
 	}
-	public String getMeatSupply() {
-		return MeatSupply;
-	}
-	public void setMeatSupply(String meatSupply) {
-		MeatSupply = meatSupply;
-	}
 	
-	
-
 }

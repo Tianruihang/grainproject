@@ -13,8 +13,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.course.entity.Meat;
-import com.course.entity.Vegetable;
+import com.course.entity.Supply;
 import com.course.meat.service.MeatServiceImpl;
+import com.course.supply.service.SupplyServiceImpl;
 import com.framework.Page;
 
 @Controller
@@ -22,20 +23,40 @@ import com.framework.Page;
 public class MeatController {
 	@Resource
 	private MeatServiceImpl meatServiceImpl;
+	@Resource   //只能注入当前的ServiceImpl
+	private SupplyServiceImpl supplyServiceImpl;
 	
 	@RequestMapping("add")
-	public String add(@RequestParam(name="name") String fname,@RequestParam(name=("price"))float fprice,HttpServletRequest request){
-		String name = null;
-		try {
-			name = new String(fname.getBytes("ISO8859_1"),"UTF-8");
-		} catch (Exception e) {
-			// TODO: handle exception
-			e.printStackTrace();
+	public String add(
+			@RequestParam(name="MeatName") String mname,
+			@RequestParam(name="MeatPrice") Float mprice,
+//			@RequestParam(name="MeatDate") Date mDate,
+			@RequestParam(name="MeatGrade") String mgrade,
+			@RequestParam(name="MeatDescribe") String mdescribe,
+			@RequestParam(name="MeatClass") String mclass,
+			@RequestParam(name="MeatState") String mstate,
+//			@RequestParam(name="MeatPicture") String mpicture,
+			@RequestParam(name="SupplyName") String msupply,
+//			@RequestParam(name="MeatLocation") String mlocation,
+			HttpServletRequest request){
+		
+		Supply supply = this.supplyServiceImpl.findByName(msupply);
+		
+		if (supply == null) {
+			return "not found";
 		}
+		
 		Meat f = new Meat();
-		f.setMeatName(name);
-		f.setMeatPrice(fprice);
+		f.setMeatName(mname);
+		f.setMeatPrice(mprice);
+		f.setMeatClass(mclass);
+		f.setMeatDescribe(mdescribe);
+		f.setMeatGrade(mgrade);
+		f.setMeatState(mstate);
+		f.setSupply(supply);
+		
 		this.meatServiceImpl.addMeat(f);
+		
 		return "redirect:list";
 	}
 	@RequestMapping(value="edit",method=RequestMethod.GET)

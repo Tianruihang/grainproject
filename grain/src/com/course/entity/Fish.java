@@ -98,11 +98,4 @@ public class Fish {
 	public void setFishLocation(String fishLocation) {
 		FishLocation = fishLocation;
 	}
-	public String getFishSupply() {
-		return FishSupply;
-	}
-	public void setFishSupply(String fishSupply) {
-		FishSupply = fishSupply;
-	}
-
 }
