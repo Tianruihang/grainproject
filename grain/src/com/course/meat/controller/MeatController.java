@@ -13,11 +13,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.course.entity.Meat;
+import com.course.entity.Vegetable;
 import com.course.meat.service.MeatServiceImpl;
 import com.framework.Page;
 
 @Controller
-@RequestMapping("Meat")
+@RequestMapping("meat")
 public class MeatController {
 	@Resource
 	private MeatServiceImpl meatServiceImpl;
@@ -77,9 +78,97 @@ public class MeatController {
 		}
 			request.setAttribute("page", page);
 			request.setAttribute("searchParam", searchParam);
-			return "meat/list";
+			return "files/shangpinguanli-meat";
 	
 	}
-	
-
+	@RequestMapping(value="deleteMeat")
+	public String delete(@RequestParam("meatId") int meatId,
+			HttpServletRequest request){
+		this.meatServiceImpl.dropMeat(meatId);
+		return "redirect:list";
+	}
+	@RequestMapping(value="deleteyhMeat")
+	public String deleteyh(@RequestParam("meatId") int meatId,
+			HttpServletRequest request){
+		this.meatServiceImpl.dropMeat(meatId);
+		return "redirect:chakanyh";
+	}
+	@RequestMapping(value="deletetejiayhMeat")
+	public String deletetejiayh(@RequestParam("meatId") int meatId,
+			HttpServletRequest request){
+		this.meatServiceImpl.dropMeat(meatId);
+		return "redirect:tejiayh";
+	}
+	@RequestMapping(value="deletetejiaMeat")
+	public String deletetejia(@RequestParam("meatId") int meatId,
+			HttpServletRequest request){
+		this.meatServiceImpl.dropMeat(meatId);
+		return "redirect:tejia";
+	}
+	@RequestMapping("chakanyh")
+	public String chakanyh(@RequestParam(name="pageNum",defaultValue="1")int pageNum,
+			@RequestParam(name="searchParam",defaultValue="") String searchParam,HttpServletRequest request,
+			Model model){
+		Page<Meat> page;
+		if (searchParam==null || "".equals(searchParam)) {
+			page=this.meatServiceImpl.listMeat(pageNum, 5,new Object[]{searchParam});
+			
+		} else {
+			try {
+				searchParam = new String(searchParam.getBytes("ISO8859_1"),"UTF-8");
+			} catch (Exception e) {
+				// TODO: handle exception
+				e.printStackTrace();
+			}
+			page = this.meatServiceImpl.listMeat(pageNum, 5, new Object[]{searchParam});
+		}
+			request.setAttribute("page", page);
+			request.setAttribute("searchParam", searchParam);
+			return "files/shangpinguanliyh-meat";
+			
+			}
+	@RequestMapping("tejiayh")
+	public String tejiayh(@RequestParam(name="pageNum",defaultValue="1")int pageNum,
+			@RequestParam(name="searchParam",defaultValue="") String searchParam,HttpServletRequest request,
+			Model model){
+		Page<Meat> page;
+		if (searchParam==null || "".equals(searchParam)) {
+			page=this.meatServiceImpl.listMeat(pageNum, 5,new Object[]{searchParam});
+			
+		} else {
+			try {
+				searchParam = new String(searchParam.getBytes("ISO8859_1"),"UTF-8");
+			} catch (Exception e) {
+				// TODO: handle exception
+				e.printStackTrace();
+			}
+			page = this.meatServiceImpl.listMeat(pageNum, 5, new Object[]{searchParam});
+		}
+			request.setAttribute("page", page);
+			request.setAttribute("searchParam", searchParam);
+			return "files/tejiashangpinyh-meat";
+			
+			}
+	@RequestMapping("tejia")
+	public String tejia(@RequestParam(name="pageNum",defaultValue="1")int pageNum,
+			@RequestParam(name="searchParam",defaultValue="") String searchParam,HttpServletRequest request,
+			Model model){
+		Page<Meat> page;
+		if (searchParam==null || "".equals(searchParam)) {
+			page=this.meatServiceImpl.listMeat(pageNum, 5,new Object[]{searchParam});
+			
+		} else {
+			try {
+				searchParam = new String(searchParam.getBytes("ISO8859_1"),"UTF-8");
+			} catch (Exception e) {
+				// TODO: handle exception
+				e.printStackTrace();
+			}
+			page = this.meatServiceImpl.listMeat(pageNum, 5, new Object[]{searchParam});
+		}
+			request.setAttribute("page", page);
+			request.setAttribute("searchParam", searchParam);
+			return "files/tejiashangpin-meat";
+			
+			}
 }

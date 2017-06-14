@@ -36,7 +36,7 @@ public class UserController {
 		return "redirect:listuser";
 	}
 	@RequestMapping(value="deleteuser")
-	public String delete(@RequestParam("UserId") int userId,
+	public String delete(@RequestParam("userId") int userId,
 			HttpServletRequest request){
 		this.userServiceImpl.dropUser(userId);
 		return "redirect:listuser";
@@ -86,7 +86,7 @@ public class UserController {
 		}
 		request.setAttribute("page", page);
 		request.setAttribute("searchParam", searchParam);
-		return "user/yonghuguanli";
+		return "files/yonghuguanli";
 		
 	}
 }

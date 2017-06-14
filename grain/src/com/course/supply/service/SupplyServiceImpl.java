@@ -31,18 +31,14 @@ public class SupplyServiceImpl {
 		return this.supplyDaoImpl.getSupply(supplyId);
 	}
 	
+	@Transactional(readOnly=true)
+	public Supply findByName(String supplyName){
+		return this.supplyDaoImpl.findByName(supplyName);
+	}
 	public void editSupply(Supply s){
 		Supply sdb = this.supplyDaoImpl.getSupply(s.getSupplyId());
 		sdb.setSupplyName(s.getSupplyName());
-		
-		
-		
-		
-		
-		
-		
-		
-		
+			
 		this.supplyDaoImpl.updateSupply(sdb);
 	}
 	public void dropSupply(int supplyId){

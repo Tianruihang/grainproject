@@ -1,4 +1,4 @@
-﻿<%@ page language="java" contentType="textml; charset=UTF-8" pageEncoding="UTF-8"%>
+﻿<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:set var="ctx" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -41,11 +41,11 @@ html { overflow-x: auto; overflow-y: auto; border:0;}
 -->
 </style>
 
-<link href="../${ctx }/css/css.css" rel="stylesheet" type="text/css" />
+<link href="${ctx }/css/css.css" rel="stylesheet" type="text/css" />
 <script type="text/JavaScript">
 
 </script>
-<link href="../${ctx }/css/style.css" rel="stylesheet" type="text/css" />
+<link href="${ctx }/css/style.css" rel="stylesheet" type="text/css" />
 </head>
 <SCRIPT language=JavaScript>
 function sousuo(){
@@ -83,7 +83,7 @@ function link(){
   <tr>
     <td height="30">      <table width="100%" border="0" cellspacing="0" cellpadding="0">
         <tr>
-          <td height="62" background="../${ctx }/images/nav04.gif">
+          <td height="62" background="${ctx }/images/nav04.gif">
             
 		   <table width="98%" border="0" align="center" cellpadding="0" cellspacing="0">
 		    <tr>

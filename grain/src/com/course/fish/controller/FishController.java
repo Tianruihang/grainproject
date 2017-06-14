@@ -10,11 +10,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.course.entity.Fish;
+import com.course.entity.Vegetable;
 import com.course.fish.service.FishServiceImpl;
 import com.framework.Page;
 
 @Controller
-@RequestMapping("Fish")
+@RequestMapping("fish")
 public class FishController {
 	
 	@Resource
@@ -75,7 +76,98 @@ public class FishController {
 		}
 			request.setAttribute("page", page);
 			request.setAttribute("searchParam", searchParam);
-			return "fish/list";
-	
-	}
-}
+			return "files/shangpinguanli-fish";
+			
+			}
+		@RequestMapping(value="deleteFish")
+			public String delete(@RequestParam("fishId") int fishId,
+					HttpServletRequest request){
+				this.fishServiceImpl.dropFish(fishId);
+				return "redirect:list";
+			}
+		@RequestMapping(value="deleteyhFish")
+		public String deleteyh(@RequestParam("fishId") int fishId,
+				HttpServletRequest request){
+			this.fishServiceImpl.dropFish(fishId);
+			return "redirect:chakanyh";
+		}
+		@RequestMapping(value="deletetejiayhFish")
+		public String deletetejiayh(@RequestParam("fishId") int fishId,
+				HttpServletRequest request){
+			this.fishServiceImpl.dropFish(fishId);
+			return "redirect:tejiayh";
+		}
+		@RequestMapping(value="deletetejiaFish")
+		public String deletetejia(@RequestParam("fishId") int fishId,
+				HttpServletRequest request){
+			this.fishServiceImpl.dropFish(fishId);
+			return "redirect:tejia";
+		}
+		
+		@RequestMapping("chakanyh")
+		public String chakanyh(@RequestParam(name="pageNum",defaultValue="1")int pageNum,
+				@RequestParam(name="searchParam",defaultValue="") String searchParam,HttpServletRequest request,
+				Model model){
+			Page<Fish> page;
+			if (searchParam==null || "".equals(searchParam)) {
+				page=this.fishServiceImpl.listFish(pageNum, 5,new Object[]{searchParam});
+				
+			} else {
+				try {
+					searchParam = new String(searchParam.getBytes("ISO8859_1"),"UTF-8");
+				} catch (Exception e) {
+					// TODO: handle exception
+					e.printStackTrace();
+				}
+				page = this.fishServiceImpl.listFish(pageNum, 5, new Object[]{searchParam});
+			}
+				request.setAttribute("page", page);
+				request.setAttribute("searchParam", searchParam);
+				return "files/shangpinguanliyh-fish";
+				
+				}
+		@RequestMapping("tejiayh")
+		public String tejiayh(@RequestParam(name="pageNum",defaultValue="1")int pageNum,
+				@RequestParam(name="searchParam",defaultValue="") String searchParam,HttpServletRequest request,
+				Model model){
+			Page<Fish> page;
+			if (searchParam==null || "".equals(searchParam)) {
+				page=this.fishServiceImpl.listFish(pageNum, 5,new Object[]{searchParam});
+				
+			} else {
+				try {
+					searchParam = new String(searchParam.getBytes("ISO8859_1"),"UTF-8");
+				} catch (Exception e) {
+					// TODO: handle exception
+					e.printStackTrace();
+				}
+				page = this.fishServiceImpl.listFish(pageNum, 5, new Object[]{searchParam});
+			}
+				request.setAttribute("page", page);
+				request.setAttribute("searchParam", searchParam);
+				return "files/tejiashangpinyh-fish";
+				
+				}
+		@RequestMapping("tejia")
+		public String tejia(@RequestParam(name="pageNum",defaultValue="1")int pageNum,
+				@RequestParam(name="searchParam",defaultValue="") String searchParam,HttpServletRequest request,
+				Model model){
+			Page<Fish> page;
+			if (searchParam==null || "".equals(searchParam)) {
+				page=this.fishServiceImpl.listFish(pageNum, 5,new Object[]{searchParam});
+				
+			} else {
+				try {
+					searchParam = new String(searchParam.getBytes("ISO8859_1"),"UTF-8");
+				} catch (Exception e) {
+					// TODO: handle exception
+					e.printStackTrace();
+				}
+				page = this.fishServiceImpl.listFish(pageNum, 5, new Object[]{searchParam});
+			}
+				request.setAttribute("page", page);
+				request.setAttribute("searchParam", searchParam);
+				return "files/tejiashangpin-fish";
+				
+				}
+		}

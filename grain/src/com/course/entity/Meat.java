@@ -31,6 +31,7 @@ public class Meat {
 	private String MeatState;
 	private String MeatPicture;
 	private String MeatLocation;
+	private String MeatSupply;
 	
 	private Supply Supply;
 	
@@ -55,7 +56,7 @@ public class Meat {
 		MeatPrice = meatPrice;
 	}
 	@ManyToOne
-	@JoinColumn(name="SupplyName")
+	@JoinColumn(name="supplyId")
 	public Supply getSupply() {
 		return Supply;
 	}
@@ -105,7 +106,12 @@ public class Meat {
 	public void setMeatLocation(String meatLocation) {
 		MeatLocation = meatLocation;
 	}
-	
+	public String getMeatSupply() {
+		return MeatSupply;
+	}
+	public void setMeatSupply(String meatSupply) {
+		MeatSupply = meatSupply;
+	}
 	
 	
 

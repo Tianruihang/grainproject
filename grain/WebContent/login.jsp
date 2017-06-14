@@ -33,7 +33,7 @@
             <div style="height:150px;"></div>
             <div class="media media-y margin-big-bottom">           
             </div>         
-            <form action="${ctx }/login/hello" method="post">
+            <form action="${ctx}/login/hello" method="post">
             <div class="panel loginbox">
                 <div class="text-center margin-big padding-big-top"><h1>grain后台管理中心</h1></div>
                 <div class="panel-body" style="padding:30px; padding-bottom:10px; padding-top:10px;">
@@ -66,7 +66,12 @@
                 </div>
                 <div style="padding:30px;"><input type="submit" class="button button-block bg-main text-big input-big" value="登录"onclick="window.location='login()'"></div>
             </div>
-            </form>          
+            </form>   
+            <div style="padding:30px;">
+            <form action="${ctx}/zhuce.jsp">
+            <input type="submit" class="button button-block bg-main text-big input-big" value="注册"/>
+            </form>   
+            </div>        
         </div>
     </div>
 </div>

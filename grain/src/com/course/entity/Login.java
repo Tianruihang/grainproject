@@ -1,3 +1,4 @@
+
 package com.course.entity;
 
 import java.util.Set;
@@ -16,30 +17,27 @@ import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
-import org.hibernate.annotations.GenericGenerator;
-import org.hibernate.annotations.Parameter;
-
 @Entity
 @Table(name="login")
 public class Login {
-	private Integer loginId;
 	private String LoginName;
 	private String Password;
 	private String Root;
-	
+	private int LoginId;
 	private Set<Supply> supply;
+	
+	
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	public Integer getLoginId() {
-		return loginId;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	public int getLoginId() {
+		return LoginId;
 	}
-	public void setLoginId(Integer loginId) {
-		this.loginId = loginId;
+	public void setLoginId(int loginId) {
+		this.LoginId = loginId;
 	}
 	public String getLoginName() {
 		return LoginName;
 	}
-	
 	public void setLoginName(String loginName) {
 		this.LoginName = loginName;
 	}
@@ -57,12 +55,11 @@ public class Login {
 		this.Root = Root;
 	}
 	@OneToMany(cascade=CascadeType.ALL,fetch=FetchType.LAZY)
+	@JoinColumn(name="supplyId",unique = true)
 	public Set<Supply> getSupply() {
 		return supply;
 	}
 	public void setSupply(Set<Supply> supply) {
 		this.supply = supply;
 	}
-	
-	
 }

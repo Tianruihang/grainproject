@@ -23,6 +23,7 @@ public class Fish {
 	private String FishState;
 	private String FishPicture;
 	private String FishLocation;
+	private String FishSupply;
 	
 	private Supply Supply;
 	
@@ -47,7 +48,7 @@ public class Fish {
 		FishPrice = fishPrice;
 	}
 	@ManyToOne
-	@JoinColumn(name="SupplyName")
+	@JoinColumn(name="SupplyId")
 	public Supply getSupply() {
 		return Supply;
 	}
@@ -96,6 +97,12 @@ public class Fish {
 	}
 	public void setFishLocation(String fishLocation) {
 		FishLocation = fishLocation;
+	}
+	public String getFishSupply() {
+		return FishSupply;
+	}
+	public void setFishSupply(String fishSupply) {
+		FishSupply = fishSupply;
 	}
 
 }

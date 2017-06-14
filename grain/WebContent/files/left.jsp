@@ -109,7 +109,7 @@ function list(idstr){
         </tr>
 	  	<tr>
           <td width="9%" height="20" ><img id="xiaotu11" src="${ctx }/images/ico06.gif" width="8" height="12" /></td>
-          <td width="91%"><a href="${ctx }/user/list" target="mainFrame" class="left-font03" onClick="tupian('11');">用户管理</a></td>
+          <td width="91%"><a href="${ctx }/user/listuser" target="mainFrame" class="left-font03" onClick="tupian('11');">用户管理</a></td>
         </tr>
       </table>
 
@@ -140,7 +140,7 @@ function list(idstr){
 				</tr>
 				<tr>
 				  <td width="9%" height="20" ><img id="xiaotu2" src="${ctx }/images/ico06.gif" width="8" height="12" /></td>
-				  <td width="91%"><a href="${ctx }/meet/list" target="mainFrame" class="left-font03" onClick="tupian('2');">肉禽类</a></td>
+				  <td width="91%"><a href="${ctx }/meat/list" target="mainFrame" class="left-font03" onClick="tupian('2');">肉禽类</a></td>
 				</tr>
 				<tr>
 				  <td width="9%" height="20" ><img id="xiaotu5" src="${ctx }/images/ico06.gif" width="8" height="12" /></td>
@@ -167,7 +167,19 @@ function list(idstr){
         
 		<tr>
           <td width="9%" height="20" ><img id="xiaotu7" src="${ctx }/images/ico06.gif" width="8" height="12" /></td>
-          <td width="91%"><a href="${ctx }/vegetable/list_tejia" target="mainFrame" class="left-font03" onClick="tupian('7');">特价商品查看</a></td>
+          <td width="91%"><a href="${ctx }/vegetable/tejia" target="mainFrame" class="left-font03" onClick="tupian('7');">特价蔬菜</a></td>
+        </tr>
+        <tr>
+          <td width="9%" height="20" ><img id="xiaotu7" src="${ctx }/images/ico06.gif" width="8" height="12" /></td>
+          <td width="91%"><a href="${ctx }/fruit/tejia" target="mainFrame" class="left-font03" onClick="tupian('7');">特价水果</a></td>
+        </tr>
+        <tr>
+          <td width="9%" height="20" ><img id="xiaotu7" src="${ctx }/images/ico06.gif" width="8" height="12" /></td>
+          <td width="91%"><a href="${ctx }/meat/tejia" target="mainFrame" class="left-font03" onClick="tupian('7');">特价肉禽</a></td>
+        </tr>
+        <tr>
+          <td width="9%" height="20" ><img id="xiaotu7" src="${ctx }/images/ico06.gif" width="8" height="12" /></td>
+          <td width="91%"><a href="${ctx }/fish/tejia" target="mainFrame" class="left-font03" onClick="tupian('7');">特价水产</a></td>
         </tr>
       </table>
 

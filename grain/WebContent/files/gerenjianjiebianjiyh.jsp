@@ -1,4 +1,4 @@
-﻿<%@ page language="java" contentType="textml; charset=UTF-8" pageEncoding="UTF-8"%>
+﻿<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:set var="ctx" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -6,13 +6,13 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>grain后台管理系统-个人简介编辑（用户）</title>
-<link rel="stylesheet" rev="stylesheet" href="../${ctx }/css/style.css" type="text/css" media="all" />
+<link rel="stylesheet" rev="stylesheet" href="${ctx }/css/style.css" type="text/css" media="all" />
 
 <style type="text/css">
 <!--
 .atten {font-size:12px;font-weight:normal;color:#F00;}
 -->
-.del{background:url(../${ctx }/images/close2.png);
+.del{background:url(${ctx }/images/close2.png);
 	width:30px;
 	height:30px;
 	display:none;
@@ -33,10 +33,10 @@
 		
 		<table border="0" cellpadding="0" cellspacing="0" style="width:100%">
 		<tr><td align="left">
-		<c:if test="${action=='edit' }">
-			<form action="${ctx }/supply/edit" method="post"/>
+		<c:if test="${action==edityh }">
+			<form action="${ctx }/supply/edityh" method="post"/>
 			</c:if>
-			<c:if test="${action!='edit' }">
+			<c:if test="${action!='edityh' }">
 			<form action="${ctx }/supply/add" method="post"/>
 			</c:if>
 		<input type="button" name="Submit" value="保存" class="button" onclick="alert('修改成功');"/>
@@ -50,23 +50,23 @@
   </tr>
   <TR>
 			<TD width="100%">
-			<input type="hidden" name="customerId" value="${s.supplyId }"></input>
+			<input type="hidden" name="customerId" value="${sup.supplyId }"></input>
 				<fieldset style="height:100%;">
-				<legend>${s.SupplyName}</legend>
+				<legend>${sup.SupplyName}</legend>
 					  <table border="0" cellpadding="5" cellspacing="1" style="width:100%">
 					    
 					    
 					  <tr>
                         <td nowrap="nowrap" align="right">联系方式:</td>
 					    <td><span class="red">
-                          <input name="txt34222" type="text" class="text" style="width:154px" value="${s.SupplyNumber}" />
+                          <input name="txt34222" type="text" class="text" style="width:154px" value="${sup.SupplyNumber}" />
 					      *</span></td>
 					   
 					    
 					    </tr>
 					  <tr>
 					    <td width="14%" align="right" nowrap>简介:</td>
-					    <td width="86%" colspan="3"><textarea name="textarea3" cols="105" rows="20">${s.SupplyIntroduce}</textarea></td>
+					    <td width="86%" colspan="3"><textarea name="textarea3" cols="105" rows="20">${sup.SupplyIntroduce}</textarea></td>
 					  </tr>
 					    <tr>
 					    <td width="14%" align="right" nowrap>图片:</td>
@@ -105,6 +105,7 @@
 			<input type="button" name="Submit" value="保存" class="button" onclick="alert('保存成功');"/>
 			
 			<input type="button" name="Submit2" value="返回" class="button" onclick="window.history.go(-1);"/></TD>
+			
 		</TR>
 		</TABLE>
 	

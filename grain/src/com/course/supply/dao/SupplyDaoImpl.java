@@ -37,6 +37,25 @@ public class SupplyDaoImpl extends BaseDao<Supply,Integer>{
 			return null;
 		}
 	}
+	/**
+	 * @Description 转换类型 
+	 * @author 田瑞航
+	 * @param supplyName
+	 * @return
+	 */
+	public Supply findByName(String supplyName){
+		String hql;
+		Object[] params = {supplyName};
+		hql="from Supply s where s.supplyName like ?";
+		try {
+			return this.findOne(hql, params);
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+			return null;
+		}
+	}
+	
 	public Supply getSupply(int supplyId){
 		try {
 			Supply s = this.get(supplyId);

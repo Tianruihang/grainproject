@@ -79,7 +79,7 @@ function list(idstr){
 				<table width="90%" border="0" align="center" cellpadding="0" cellspacing="0">
 				  <tr>
 					<td width="25%" rowspan="2"><img src="${ctx }/images/ico02.gif" width="35" height="35" /></td>
-					<td width="75%" height="22" class="left-font01">你好，<span class="left-font02">${Login.Supply.SupplyName}</span></td>
+					<td width="75%" height="22" class="left-font01">你好，<span class="left-font02">用户${suppn}</span></td>
 				  </tr>
 				  <tr>
 					<td height="22" class="left-font01">
@@ -115,19 +115,19 @@ function list(idstr){
 				cellspacing="0" class="left-table02">
 				<tr>
 				  <td width="9%" height="20" ><img id="xiaotu1" src="${ctx }/images/ico06.gif" width="8" height="12" /></td>
-				  <td width="91%"><a href="${ctx}/vegetable/chakanyh?VegetableSupply=${s.supply.supplyName}" target="mainFrame" class="left-font03" onClick="tupian('1');">蔬菜类</a></td>
+				  <td width="91%"><a href="${ctx}/vegetable/chakanyh?VegetableSupply=${suppn}" target="mainFrame" class="left-font03" onClick="tupian('1');">蔬菜类</a></td>
 				</tr>
 				<tr>
 				  <td width="9%" height="20" ><img id="xiaotu4" src="${ctx }/images/ico06.gif" width="8" height="12" /></td>
-				  <td width="91%"><a href="${ctx}/fruit/list" target="mainFrame" class="left-font03" onClick="tupian('4');">水果类</a></td>
+				  <td width="91%"><a href="${ctx}/fruit/chakanyh?FruitSupply=${suppn}" target="mainFrame" class="left-font03" onClick="tupian('4');">水果类</a></td>
 				</tr>
 				<tr>
 				  <td width="9%" height="20" ><img id="xiaotu2" src="${ctx }/images/ico06.gif" width="8" height="12" /></td>
-				  <td width="91%"><a href="${ctx}/meet/list" target="mainFrame" class="left-font03" onClick="tupian('2');">肉禽类</a></td>
+				  <td width="91%"><a href="${ctx}/meat/chakanyh?MeatSupply=${suppn}" target="mainFrame" class="left-font03" onClick="tupian('2');">肉禽类</a></td>
 				</tr>
 				<tr>
 				  <td width="9%" height="20" ><img id="xiaotu5" src="${ctx }/images/ico06.gif" width="8" height="12" /></td>
-				  <td width="91%"><a href="${ctx}/fish/list" target="mainFrame" class="left-font03" onClick="tupian('5');">水产类</a></td>
+				  <td width="91%"><a href="${ctx}/fish/chakanyh?FishSupply=${suppn}" target="mainFrame" class="left-font03" onClick="tupian('5');">水产类</a></td>
 				</tr>
 				
       </table>
@@ -149,9 +149,22 @@ function list(idstr){
         
 		<tr>
           <td width="9%" height="20" ><img id="xiaotu7" src="${ctx }/images/ico06.gif" width="8" height="12" /></td>
-          <td width="91%"><a href="${ctx}/fish/list" target="mainFrame" class="left-font03" onClick="tupian('7');">特价商品查看</a></td>
+          <td width="91%"><a href="${ctx}/vegetable/tejiayh" target="mainFrame" class="left-font03" onClick="tupian('7');">特价蔬菜</a></td>
+        </tr>
+        <tr>
+          <td width="9%" height="20" ><img id="xiaotu7" src="${ctx }/images/ico06.gif" width="8" height="12" /></td>
+          <td width="91%"><a href="${ctx}/fruit/tejiayh" target="mainFrame" class="left-font03" onClick="tupian('7');">特价水果</a></td>
+        </tr>
+        <tr>
+          <td width="9%" height="20" ><img id="xiaotu7" src="${ctx }/images/ico06.gif" width="8" height="12" /></td>
+          <td width="91%"><a href="${ctx}/meat/tejiayh" target="mainFrame" class="left-font03" onClick="tupian('7');">特价肉禽</a></td>
+        </tr>
+        <tr>
+          <td width="9%" height="20" ><img id="xiaotu7" src="${ctx }/images/ico06.gif" width="8" height="12" /></td>
+          <td width="91%"><a href="${ctx}/fish/tejiayh" target="mainFrame" class="left-font03" onClick="tupian('7');">特价鱼类</a></td>
         </tr>
       </table>
+      
 
 	  <!--  ¿Í»§ÏµÍ³½áÊø    -->
 
@@ -174,11 +187,11 @@ function list(idstr){
 	  <table id="subtree4" style="DISPLAY: none" width="80%" border="0" align="center" cellpadding="0" cellspacing="0" class="left-table02">
 		<tr>
           <td width="9%" height="20" ><img id="xiaotu11" src="${ctx }/images/ico06.gif" width="8" height="12" /></td>
-          <td width="91%"><a href="${ctx}/supply/edityh?supplyId=${supp.supplyId}" target="mainFrame" class="left-font03" onClick="tupian('11');">编辑</a></td>
+          <td width="91%"><a href="${ctx}/supply/bianjiyh?supplyId=${suppi}" target="mainFrame" class="left-font03" onClick="tupian('11');">编辑</a></td>
         </tr>
 	  	<tr>
           <td width="9%" height="20" ><img id="xiaotu11" src="${ctx }/images/ico06.gif" width="8" height="12" /></td>
-          <td width="91%"><a href="${ctx}/supply/chakanyh?supplyId=${supp.supplyId}" target="mainFrame" class="left-font03" onClick="tupian('11');">查看</a></td>
+          <td width="91%"><a href="${ctx}/supply/chakanyh?supplyId=${suppi}" target="mainFrame" class="left-font03" onClick="tupian('11');">查看</a></td>
         </tr>
       </table>
 

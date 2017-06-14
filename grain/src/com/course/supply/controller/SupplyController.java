@@ -1,12 +1,8 @@
 package com.course.supply.controller;
 
-import java.io.UnsupportedEncodingException;
-
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import javax.swing.text.html.FormSubmitEvent.MethodType;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,8 +10,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.course.entity.Supply;
-import com.course.meat.service.MeatServiceImpl;
-import com.course.entity.Meat;
 import com.course.supply.service.SupplyServiceImpl;
 import com.framework.Page;
 
@@ -54,8 +48,8 @@ public class SupplyController {
 			HttpServletRequest request){
 		Supply s = this.supplyServiceImpl.getSupply(supplyId);
 		request.setAttribute("sup", s);
-		request.setAttribute("action", "edit");
-		return "files/geranjianjiebianjiyh";
+		request.setAttribute("action", "edityh");
+		return "redirect:chakanyh";
 	}
 	@RequestMapping(value="delete")
 	public String delete(@RequestParam("supplyId") int supplyId,
@@ -111,6 +105,13 @@ public class SupplyController {
 		HttpSession session = request.getSession();
 		session.setAttribute("supp",supply);
 		return "files/gerenjianjiechakanyh";
+	}
+	@RequestMapping("bianjiyh")
+	public String bianjiyh(@RequestParam(name="supplyId")int supplyId,HttpServletRequest request){
+		Supply supply = this.supplyServiceImpl.getSupply(supplyId);
+		HttpSession session = request.getSession();
+		session.setAttribute("supp",supply);
+		return "files/gerenjianjiebianjiyh";
 	}
 
 }

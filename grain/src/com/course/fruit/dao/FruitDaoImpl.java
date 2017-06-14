@@ -20,7 +20,7 @@ public class FruitDaoImpl extends BaseDao<Fruit,Integer> {
 	public Page<Fruit> findFruit(int pageNum,int pageSize,Object[] params){
 		String hql;
 		if(params !=null && params.length>0){
-			hql="from Fruit f where f.name like ?";
+			hql="from Fruit f where f.fruitName like ?";
 			params[0]="%"+params[0]+"%";
 		}else{
 			hql="from Fruit";
