@@ -10,7 +10,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.course.entity.Fish;
+import com.course.entity.Supply;
 import com.course.fish.service.FishServiceImpl;
+import com.course.supply.service.SupplyServiceImpl;
 import com.framework.Page;
 
 @Controller
@@ -19,19 +21,36 @@ public class FishController {
 	
 	@Resource
 	private FishServiceImpl fishServiceImpl;
+	@Resource   //只能注入当前的ServiceImpl
+	private SupplyServiceImpl supplyServiceImpl;
 	
 	@RequestMapping("add")
-	public String add(@RequestParam(name="name") String fname,@RequestParam(name=("price"))float fprice,HttpServletRequest request){
-		String name = null;
-		try {
-			name = new String(fname.getBytes("ISO8859_1"),"UTF-8");
-		} catch (Exception e) {
-			// TODO: handle exception
-			e.printStackTrace();
+	public String add(
+			@RequestParam(name="FishName") String fname,
+			@RequestParam(name="FishPrice") Float fprice,
+//			@RequestParam(name="FishDate") Date fDate,
+			@RequestParam(name="FishGrade") String fgrade,
+			@RequestParam(name="FishDescribe") String fdescribe,
+			@RequestParam(name="FishClass") String fclass,
+			@RequestParam(name="FishState") String fstate,
+//			@RequestParam(name="FishPicture") String fpicture,
+			@RequestParam(name="SupplyName") String fsupply,
+//			@RequestParam(name="FishLocation") String flocation,
+			HttpServletRequest request){
+		
+		Supply supply = this.supplyServiceImpl.findByName(fsupply);
+		
+		if (supply == null) {
+			return "not found";
 		}
+		
 		Fish f = new Fish();
-		f.setFishName(name);
+		f.setFishName(fname);
 		f.setFishPrice(fprice);
+		f.setFishClass(fclass);
+		f.setFishDescribe(fdescribe);
+		f.setFishGrade(fgrade);
+		f.setSupply(supply);
 		this.fishServiceImpl.addFish(f);
 		return "redirect:list";
 	}

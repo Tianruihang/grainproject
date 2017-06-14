@@ -25,7 +25,7 @@ public class Fish {
 	private String FishLocation;
 	private String FishSupply;
 	
-//	private Supply Supply;
+	private Supply Supply;
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -47,15 +47,15 @@ public class Fish {
 	public void setFishPrice(Float fishPrice) {
 		FishPrice = fishPrice;
 	}
-//	@ManyToOne
-//	@JoinColumn(name="SupplyName")
-//	public Supply getSupply() {
-//		return Supply;
-//	}
-//	
-//	public void setSupply(Supply Supply) {
-//		this.Supply = Supply;
-//	}
+	@ManyToOne
+	@JoinColumn(name="SupplyId")
+	public Supply getSupply() {
+		return Supply;
+	}
+	
+	public void setSupply(Supply Supply) {
+		this.Supply = Supply;
+	}
 	public Date getFishDate() {
 		return FishDate;
 	}
@@ -98,11 +98,4 @@ public class Fish {
 	public void setFishLocation(String fishLocation) {
 		FishLocation = fishLocation;
 	}
-	public String getFishSupply() {
-		return FishSupply;
-	}
-	public void setFishSupply(String fishSupply) {
-		FishSupply = fishSupply;
-	}
-
 }

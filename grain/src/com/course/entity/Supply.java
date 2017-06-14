@@ -27,6 +27,9 @@ public class Supply {
 	private String SupplyPicture;
 	
 	private List<Vegetable> vegetables = new ArrayList<>();
+	private List<Fruit> fruits = new ArrayList<>();
+	private List<Meat> Meats = new ArrayList<>();
+	private List<Fish> Fishs = new ArrayList<>();
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -67,6 +70,27 @@ public class Supply {
 	}
 	public void setVegetables(List<Vegetable> vegetables) {
 		this.vegetables = vegetables;
+	}
+	@OneToMany(cascade=CascadeType.ALL,fetch=FetchType.LAZY)
+	public List<Fruit> getFruits() {
+		return fruits;
+	}
+	public void setFruits(List<Fruit> fruits) {
+		this.fruits = fruits;
+	}
+	@OneToMany(cascade=CascadeType.ALL,fetch=FetchType.LAZY)
+	public List<Meat> getMeats() {
+		return Meats;
+	}
+	public void setMeats(List<Meat> Meats) {
+		this.Meats = Meats;
+	}
+	@OneToMany(cascade=CascadeType.ALL,fetch=FetchType.LAZY)
+	public List<Fish> getFishs() {
+		return Fishs;
+	}
+	public void setFishs(List<Fish> Fishs) {
+		this.Fishs = Fishs;
 	}
 	
 

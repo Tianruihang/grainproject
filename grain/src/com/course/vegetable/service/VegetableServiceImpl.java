@@ -19,6 +19,8 @@ public class VegetableServiceImpl {
 		this.vegetableDaoImpl.saveVegetable(v);
 	}
 
+	
+	//实现特价查询的函数
 	@Transactional(readOnly=true)
 	public Page<Vegetable> listVegetable(int pageNum,int pageSize,Object[] params){
 		return this.vegetableDaoImpl.findVegetable(pageNum, pageSize, params);

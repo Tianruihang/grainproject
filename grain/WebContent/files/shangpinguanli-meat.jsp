@@ -134,50 +134,9 @@ function link(){
                     <td bgcolor="#FFFFFF"><a href="listyuangongmingxi.jsp">${s.meatClass}</a></td>
                     <td height="20" bgcolor="#FFFFFF">${s.meatPrice}</td>
                     <td bgcolor="#FFFFFF">${s.meatDate}</td>
-                   <td bgcolor="#FFFFFF">${s.meatSupply} </td>
+                   <td bgcolor="#FFFFFF">${s.supply.supplyName} </td>
           <td bgcolor="#FFFFFF"><a href="${ctx}/meat/deleteMeat?meatId=${s.meatId }">删除</a>&nbsp;|&nbsp;<a href="${ctx}/files/addbianji.jsp">编辑</a></td>
                   </tr>
-        <!--       <tr>
-            <td bgcolor="#FFFFFF"><input type="checkbox" name="delid"/></td>
-            <td width="12%" height="20" align="center" bgcolor="#FFFFFF">2</td>
-          <td height="20" bgcolor="#FFFFFF"><a href="listyuangongmingxi.html">红薯</a></td>
-                    <td bgcolor="#FFFFFF"><a href="listyuangongmingxi.html">根菜类</a></td>
-                    <td height="20" bgcolor="#FFFFFF">1.0/kg</td>
-                    <td bgcolor="#FFFFFF">2017-05-10</td>
-                    <td bgcolor="#FFFFFF">张三</td>
-          <td bgcolor="#FFFFFF"><a href="kehu.htm">删除</a>&nbsp;|&nbsp;<a href="addbianji.htm">编辑</a></td>
-                  </tr>
-                  <tr>
-            <td bgcolor="#FFFFFF"><input type="checkbox" name="delid"/></td>
-            <td width="12%" height="20" align="center" bgcolor="#FFFFFF">3</td>
-          <td height="20" bgcolor="#FFFFFF"><a href="listyuangongmingxi.html">豆角</a></td>
-                    <td bgcolor="#FFFFFF"><a href="listyuangongmingxi.html">茎菜类</a></td>
-                    <td height="20" bgcolor="#FFFFFF">2.5/kg</td>
-                    <td bgcolor="#FFFFFF">2017-05-11</td>
-                    <td bgcolor="#FFFFFF">张三</td>
-          <td bgcolor="#FFFFFF"><a href="kehu.htm">删除</a>&nbsp;|&nbsp;<a href="addbianji.htm">编辑</a></td>
-                  </tr>
-                  <tr>
-            <td bgcolor="#FFFFFF"><input type="checkbox" name="delid"/></td>
-            <td width="12%" height="20" align="center" bgcolor="#FFFFFF">4</td>
-          <td height="20" bgcolor="#FFFFFF"><a href="listyuangongmingxi.html">菠菜</a></td>
-                    <td bgcolor="#FFFFFF"><a href="listyuangongmingxi.html">叶菜类</a></td>
-                    <td height="20" bgcolor="#FFFFFF">2.2/kg</td>
-                    <td bgcolor="#FFFFFF">2017-05-05</td>
-                    <td bgcolor="#FFFFFF">张三</td>
-          <td bgcolor="#FFFFFF"><a href="kehu.htm">删除</a>&nbsp;|&nbsp;<a href="addbianji.htm">编辑</a></td>
-                  </tr>
-                  <tr>
-            <td bgcolor="#FFFFFF"><input type="checkbox" name="delid"/></td>
-            <td width="12%" height="20" align="center" bgcolor="#FFFFFF">5</td>
-          <td height="20" bgcolor="#FFFFFF"><a href="listyuangongmingxi.html">番茄</a></td>
-                    <td bgcolor="#FFFFFF"><a href="listyuangongmingxi.html">果菜类</a></td>
-                    <td height="20" bgcolor="#FFFFFF">2.0/kg</td>
-                    <td bgcolor="#FFFFFF">2017-05-09</td>
-                    <td bgcolor="#FFFFFF">张三</td>
-          <td bgcolor="#FFFFFF"><a href="kehu.htm">删除</a>&nbsp;|&nbsp;<a href="addbianji.htm">编辑</a></td>
-                  </tr>        -->     
-                 
                  </c:forEach> 
                  
                   </tr>

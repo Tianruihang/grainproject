@@ -1,6 +1,7 @@
 package com.course.fruit.controller;
 
 import java.io.UnsupportedEncodingException;
+import java.util.Date;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -13,7 +14,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.course.entity.Fruit;
+import com.course.entity.Supply;
 import com.course.fruit.service.FruitServiceImpl;
+import com.course.supply.service.SupplyServiceImpl;
 import com.framework.Page;
 
 @Controller
@@ -22,22 +25,43 @@ public class FruitController {
 	
 	@Resource
 	private FruitServiceImpl fruitServiceImpl;
+	@Resource   //只能注入当前的ServiceImpl
+	private SupplyServiceImpl supplyServiceImpl;
 	
 	@RequestMapping("add")
-	public String add(@RequestParam(name="name") String fname,@RequestParam(name=("price"))float fprice,HttpServletRequest request){
-		String name = null;
-		try {
-			name = new String(fname.getBytes("ISO8859_1"),"UTF-8");
-		} catch (Exception e) {
-			// TODO: handle exception
-			e.printStackTrace();
+	public String add(
+			@RequestParam(name="FruitName") String fname,
+			@RequestParam(name=("FruitPrice"))Float fprice,
+//			@RequestParam(name="FruitDate") Date fDate,
+			@RequestParam(name="FruitGrade") String fgrade,
+			@RequestParam(name="FruitDescribe") String fdescribe,
+			@RequestParam(name="FruitClass") String fclass,
+			@RequestParam(name="FruitState") String fstate,
+//			@RequestParam(name="FruitPicture") String fpicture,
+			@RequestParam(name="SupplyName") String fsupply,
+			HttpServletRequest request){
+		
+		Supply supply = this.supplyServiceImpl.findByName(fsupply);
+		
+		if (supply == null) {
+			return "not found";
 		}
+		
 		Fruit f = new Fruit();
-		f.setFruitName(name);
+		
+		f.setFruitName(fname);
 		f.setFruitPrice(fprice);
+		f.setFruitClass(fclass);
+		f.setFruitDescribe(fdescribe);
+		f.setFruitGrade(fgrade);
+		f.setFruitState(fstate);
+		f.setSupply(supply);
+		
 		this.fruitServiceImpl.addFruit(f);
+		
 		return "redirect:list";
 	}
+	
 	@RequestMapping(value="edit",method=RequestMethod.GET)
 	public String toEdit(@RequestParam("FruitId") int fruitId,
 			HttpServletRequest request){

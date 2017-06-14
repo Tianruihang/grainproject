@@ -167,7 +167,7 @@ function list(idstr){
         
 		<tr>
           <td width="9%" height="20" ><img id="xiaotu7" src="${ctx }/images/ico06.gif" width="8" height="12" /></td>
-          <td width="91%"><a href="${ctx }/vegetable/list_tejia" target="mainFrame" class="left-font03" onClick="tupian('7');">特价商品查看</a></td>
+          <td width="91%"><a href="${ctx }/vegetable/telist" target="mainFrame" class="left-font03" onClick="tupian('7');">特价商品查看</a></td>
         </tr>
       </table>
 

@@ -90,10 +90,9 @@ function link(){
         <tr>
         <td width="24"><img src="${ctx}/images/ico07.gif" width="20" height="18" /></td>
         <td width="519"><label>商品名称:
-            <input name="text" type="text" nam="gongs" />
+        <input id="searchParam" type="text" placeholder="请输入搜索名称" " name="" value="${searchParam }" class="input" style="width:250px; line-height:17px;display:inline-block" />
+	 	<a href="javascrpt:search()" class="button border-main icon-search" onclick="searchp();return false;" > 搜索</a>	
         </label>
-          </input>
-          <input name="Submit" type="button" class="right-button02" value="搜索" /></td>
          <td width="679" align="left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </td>  
         </tr>
           </table></td>
@@ -124,8 +123,6 @@ function link(){
                     <td width="14%" align="center" bgcolor="#EEEEEE">供应商</td>
                     <td width="11%" align="center" bgcolor="#EEEEEE">操作</td>
                   </tr>
-                  
-                  
                   <c:forEach items="${page.list}" var="s">
                   <tr>
             <td bgcolor="#FFFFFF"><input type="checkbox" name="delid"/></td>
@@ -166,8 +163,68 @@ function link(){
           </table></td>
         </tr>
       </table>
- 
-
 </form>
+<script type="text/javascript">
+	//搜索
+	function searchp(){
+		var p=$("#searchParam").val();
+		window.location.href = "${ctx }/vegetable/list?searchParam="+p;
+	}
+
+		//单个删除
+		function del(id, mid, iscid) {
+			if (confirm("您确定要删除吗?")) {
+
+			}
+		}
+
+		//全选
+		$("#checkall").click(function() {
+			$("input[name='id[]']").each(function() {
+				if (this.checked) {
+					this.checked = false;
+				} else {
+					this.checked = true;
+				}
+			});
+		})
+
+		//批量删除
+		function DelSelect() {
+			var Checkbox = false;
+			$("input[name='id[]']").each(function() {
+				if (this.checked == true) {
+					Checkbox = true;
+				}
+			});
+			if (Checkbox) {
+				var t = confirm("您确认要删除选中的内容吗？");
+				if (t == false)
+					return false;
+				$("#listform").submit();
+			} else {
+				alert("请选择您要删除的内容!");
+				return false;
+			}
+		}
+
+		//批量排序
+		function sorts() {
+			var Checkbox = false;
+			$("input[name='id[]']").each(function() {
+				if (this.checked == true) {
+					Checkbox = true;
+				}
+			});
+			if (Checkbox) {
+
+				$("#listform").submit();
+			} else {
+				alert("请选择要操作的内容!");
+				return false;
+			}
+		}
+
+	</script>
 </body>
 </html>

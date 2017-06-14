@@ -30,29 +30,21 @@ public class Fruit {
 	private String FruitState;
 	private String FruitPicture;
 	private String FruitLocation;
-	private String FruitSupply;
+	private String fruitSupply;
 	
-	//private Set<Supply> supply;
+	private Supply Supply;
 	
-	
-	public void setFruitId(Integer fruitId) {
-		FruitId = fruitId;
-	}
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	public Integer getFruitId() {
 		return FruitId;
 	}
+	public void setFruitId(Integer fruitId) {
+		FruitId = fruitId;
+	}
 	public String getFruitName() {
 		return FruitName;
 	}
-	public String getFruitSupply() {
-		return FruitSupply;
-	}
-	public void setFruitSupply(String fruitSupply) {
-		FruitSupply = fruitSupply;
-	}
-	
 	public void setFruitName(String fruitName) {
 		FruitName = fruitName;
 	}
@@ -62,15 +54,15 @@ public class Fruit {
 	public void setFruitPrice(Float fruitPrice) {
 		FruitPrice = fruitPrice;
 	}
-//	@ManyToOne
-//	@JoinColumn(name="SupplyName")
-//	public Supply getSupply() {
-//		return (Supply) supply;
-//	}
-//	
-//	public void setSupply(Supply Supply, Set<Supply> supply) {
-//		this.supply = supply;
-//	}
+	@ManyToOne
+	@JoinColumn(name="supplyId")
+	public Supply getSupply() {
+		return  Supply;
+	}
+	public void setSupply(Supply supply) {
+		this.Supply = supply;
+	}
+	
 	public Date getFruitDate() {
 		return FruitDate;
 	}
