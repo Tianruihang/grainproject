@@ -91,7 +91,7 @@ function link(){
         <td width="24"><img src="${ctx}/images/ico07.gif" width="20" height="18" /></td>
         <td width="519"><label>商品名称:
         <input id="searchParam" type="text" placeholder="请输入搜索名称" " name="" value="${searchParam }" class="input" style="width:250px; line-height:17px;display:inline-block" />
-	 	<a href="javascrpt:search()" class="button border-main icon-search" onclick="searchp();return false;" > 搜索</a>	
+	 	<a href="javascrpt:search()" class="button border-main icon-search" onclick="search();" > 搜索</a>	
         </label>
          <td width="679" align="left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </td>  
         </tr>
@@ -132,7 +132,7 @@ function link(){
                     <td height="20" bgcolor="#FFFFFF">${s.vegetablePrice}</td>
                     <td bgcolor="#FFFFFF">${s.vegetableDate}</td>
                    <td bgcolor="#FFFFFF">${s.supply.supplyName} </td>
-          <td bgcolor="#FFFFFF"><a href="${ctx}/vegetable/deleteVegetable?vegetableId=${s.vegetableId }">删除</a>&nbsp;|&nbsp;<a href="${ctx}/files/addbianji.jsp">编辑</a></td>
+          <td bgcolor="#FFFFFF"><a href="${ctx}/vegetable/deleteVegetable?vegetableId=${s.vegetableId }">删除</a>&nbsp;|&nbsp;<a href="${ctx}/files/addbianji-vegetable.jsp">编辑</a></td>
                   </tr>
                  
                  </c:forEach> 
@@ -166,7 +166,7 @@ function link(){
 </form>
 <script type="text/javascript">
 	//搜索
-	function searchp(){
+	function search(){
 		var p=$("#searchParam").val();
 		window.location.href = "${ctx }/vegetable/list?searchParam="+p;
 	}

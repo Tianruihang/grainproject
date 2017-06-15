@@ -135,7 +135,7 @@ function link(){
                     <td height="20" bgcolor="#FFFFFF">${s.fruitPrice}</td>
                     <td bgcolor="#FFFFFF">${s.fruitDate}</td>
                    <td bgcolor="#FFFFFF">${s.supply.supplyName} </td>
-          <td bgcolor="#FFFFFF"><a href="${ctx}/fruit/deleteFruit?fruitId=${s.fruitId }">删除</a>&nbsp;|&nbsp;<a href="${ctx}/files/addbianji.jsp">编辑</a></td>
+          <td bgcolor="#FFFFFF"><a href="${ctx}/fruit/deleteFruit?fruitId=${s.fruitId }">删除</a>&nbsp;|&nbsp;<a href="${ctx}/files/addbianji-fruit.jsp">编辑</a></td>
                   </tr>
                  </c:forEach> 
                  

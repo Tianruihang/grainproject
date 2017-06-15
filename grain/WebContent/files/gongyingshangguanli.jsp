@@ -51,10 +51,6 @@ html { overflow-x: auto; overflow-y: auto; border:0;}
 function search(){
 	var s=$("#searchParam").val();
 	window.location.href="${ctx }/supply/list?searchParam="+s;
-	
-	$("[supplyName='pagen']").each(function(key,value){
-		$(this).attr("href",$(this).attr("href")+"&searchParam='"+s+"'");
-	});
 }
 function selectAll(){
   var obj = document.fom.elements;
@@ -76,7 +72,7 @@ function unselectAll(){
 }
 
 function link(){
-    document.getElementById("fom").action="${ctx }/supply/list";
+    document.getElementById("fom").action="${ctx }/files/addgongyingshang.jsp";
     document.getElementById("fom").submit();
 }
 function del(){

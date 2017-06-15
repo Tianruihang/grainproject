@@ -51,6 +51,12 @@ html { overflow-x: auto; overflow-y: auto; border:0;}
 function sousuo(){
   window.open("gaojisousuo.jsp","","depended=0,alwaysRaised=1,width=800,height=510,location=0,menubar=0,resizable=0,scrollbars=0,status=0,toolbar=0");
 }
+function search(){
+	var s=$("#searchParam").val();
+	window.location.href="${ctx }/fish/list?searchParam="+s;
+	
+	
+}
 function selectAll(){
   var obj = document.fom.elements;
   for (var i=0;i<obj.length;i++){
@@ -93,7 +99,7 @@ function link(){
             <input name="text" type="text" nam="gongs" />
         </label>
           </input>
-          <input name="Submit" type="button" class="right-button02" value="搜索" /></td>
+          <input name="Submit" type="button" class="right-button02" value="搜索" onclick="search()" /></td>
          <td width="679" align="left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </td>  
         </tr>
           </table></td>
@@ -135,7 +141,7 @@ function link(){
                     <td height="20" bgcolor="#FFFFFF">${s.fishPrice}</td>
                     <td bgcolor="#FFFFFF">${s.fishDate}</td>
                    <td bgcolor="#FFFFFF">${s.supply.supplyName} </td>
-          <td bgcolor="#FFFFFF"><a href="${ctx}/fish/deleteFish?fishId=${s.fishId }">删除</a>&nbsp;|&nbsp;<a href="${ctx}/files/addbianji.jsp">编辑</a></td>
+          <td bgcolor="#FFFFFF"><a href="${ctx}/fish/deleteFish?fishId=${s.fishId }">删除</a>&nbsp;|&nbsp;<a href="${ctx}/files/addbianji-fish.jsp">编辑</a></td>
                   </tr>
                  </c:forEach> 
                  

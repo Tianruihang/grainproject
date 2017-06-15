@@ -71,7 +71,7 @@ function unselectAll(){
 }
 
 function link(){
-    document.getElementById("fom").action="kehu.htm";
+    document.getElementById("fom").action="${ctx }/files/addbianji-meat.jsp";
    document.getElementById("fom").submit();
 }
 
@@ -105,7 +105,7 @@ function link(){
           <td><table width="95%" border="0" align="center" cellpadding="0" cellspacing="0">
              <tr>
                <td height="20"><span class="newfont07">选择<a href="#" class="right-font08" onclick="selectAll();">全选</a>-<a href="#" class="right-font08" onclick="unselectAll();">反选</a></span>
-               <input name="Submit" type="button" class="right-button08" value="删除所选信息" /> <a href="${ctx }/files/addbianji.jsp"><button type="button" class="right-button08">添加信息</button></a>
+               <input name="Submit" type="button" class="right-button08" value="删除所选信息" /> <a href="${ctx }/files/addbianji-meat.jsp"><button type="button" class="right-button08" onclick="link();">添加信息</button></a>
                 </td>
           </tr>
               <tr>
@@ -134,7 +134,7 @@ function link(){
                     <td height="20" bgcolor="#FFFFFF">${s.meatPrice}</td>
                     <td bgcolor="#FFFFFF">${s.meatDate}</td>
                    <td bgcolor="#FFFFFF">${s.supply.supplyName} </td>
-          <td bgcolor="#FFFFFF"><a href="${ctx}/vegetable/deleteyhMeat?meatId=${s.meatId }">删除</a>&nbsp;|&nbsp;<a href="${ctx}/files/addbianji.jsp">编辑</a></td>
+          <td bgcolor="#FFFFFF"><a href="${ctx}/vegetable/deleteyhMeat?meatId=${s.meatId }">删除</a>&nbsp;|&nbsp;<a href="${ctx}/files/addbianji-meat.jsp">编辑</a></td>
                   </tr>
                  </c:if>
                  </c:forEach> 
