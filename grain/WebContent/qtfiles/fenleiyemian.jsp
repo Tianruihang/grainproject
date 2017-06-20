@@ -67,25 +67,25 @@ footer{background:none}
         </li>
         <li class="line"></li>
         <li id='nav_1' style='width:75px;'>
-        <a href='${ctx }/fruit/qt_list' 0 title='美味水果' class='hover-none nav'>
+        <a href='${ctx }/qtfiles/fenleiyemian.jsp' 0 title='美味水果' class='hover-none nav'>
         <span>美味水果</span>
         </a>
         </li>
         <li class="line"></li>
         <li id='nav_68' style='width:75px;'>
-        <a href='${ctx }/vegetable/qt_list' title='新鲜蔬菜' class='hover-none nav'>
+        <a href='${ctx }/qtfiles/fenleiyemian.jsp' title='新鲜蔬菜' class='hover-none nav'>
         <span>新鲜蔬菜</span>
         </a>
         </li>
         <li class="line"></li>
         <li id='nav_69' style='width:75px;'>
-        <a href='${ctx }/fish/qt_list' 0 title='水产海鲜' class='hover-none nav'>
+        <a href='${ctx }/qtfiles/fenleiyemian.jsp' 0 title='水产海鲜' class='hover-none nav'>
         <span>水产海鲜</span>
         </a>
         </li>
         <li class="line"></li>
         <li id='nav_33' style='width:75px;'>
-        <a href='${ctx }/meet/qt_list' 0 title='鲜肉家禽' class='hover-none nav'>
+        <a href='${ctx }/qtfiles/fenleiyemian.jsp' 0 title='鲜肉家禽' class='hover-none nav'>
         <span>鲜类家禽</span>
         </a>
         </li>
